@@ -1,23 +1,65 @@
+<!-- {% load static %} -->
+
 <!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>MAIN PAGE HOORAY</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
 </head>
 <body>
+
     <header class="top"> это будет хедер
-         <nav>
-             <a href="/categories">Категории</a>
-             <a href="/vessels">Все Сосуды</a>
-             <a href="/poll">Опросик</a>
+         <nav class="navigation_panel">
+             <a class="abutton" href="/categories">Категории</a>
+             <a class="abutton" href="/vessels">Все Сосуды</a>
+             <!-- <a href="/poll">Опросик</a> -->
          </nav>
     </header>
 
 
     <main>
-         <a href="http://127.0.0.1:8000/main/poll">Пройди тест и узнай, какой ты сосуд!!!</a>
-        <article></article>
-        <article></article>
+         <a href="http://127.0.0.1:8000/poll">Пройди тест и узнай, какой ты сосуд!!!</a>
+         <article>
+            <figure>
+                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                 alt="тут дожна быть картинка сосуда"
+                 width="150px">
+                <figcaption>название сосуда</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                 alt="тут дожна быть картинка сосуда"
+                 width="150px">
+                <figcaption>название сосуда</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                 alt="тут дожна быть картинка сосуда"
+                 width="150px">
+                <figcaption>название сосуда</figcaption>
+            </figure>
+         </article>
+        <article>
+                        <figure>
+                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                 alt="тут дожна быть картинка сосуда"
+                 width="150px">
+                <figcaption>название сосуда</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                 alt="тут дожна быть картинка сосуда"
+                 width="150px">
+                <figcaption>название сосуда</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                 alt="тут дожна быть картинка сосуда"
+                 width="150px">
+                <figcaption>название сосуда</figcaption>
+            </figure>
+        </article>
     </main>
 
 
@@ -28,5 +70,7 @@
     <!-- <h1>Hello, World!</h1>
     <p>Welcome to the main page of the Surprise Vessels application.</p>
     <p>It is very empty now</p> -->
+
 </body>
 </html>
+
