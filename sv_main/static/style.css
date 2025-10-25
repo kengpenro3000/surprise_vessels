@@ -9,16 +9,36 @@ header {
     
 }
 .navigation_panel{
-    padding: 2px 2px ;
+    padding: 0px 0px 2px 0px;
+    text-align: center;
+
 }
 
 .abutton{
-    display: inline-block;
-    padding: 0px 5px;
+    /* display: inline-block; */
+    margin: 0px 1000px 0px 0px;
     background-color: crimson;
     transition: transform 0.4s;
+    /* display: inline-block; */
 }
 
 .abutton:hover{
     transform: scale(110%);
 }
+
+.test{
+
+}
+
+/*Mainb page style*/
+
+.main_poll{
+    height: 100px;
+}
+
+/* Categories style */
+
+/* .cat_descr{
+    text-align: right;
+    float: right;
+} */

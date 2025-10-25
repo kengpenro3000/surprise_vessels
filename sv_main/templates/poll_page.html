@@ -1,16 +1,21 @@
+<!-- {% load static %} -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poll</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+
 </head>
 <body>
-    <header class="top"> это будет хедер
-            <nav> 
-                 <a href="/categories">Категории</a>
-                 <a href="/vessels">Все Сосуды</a>
-                 <a href="/">Главная<a>
+    <header class="top"> Все сосуды с секретом.ком
+            <nav class="navigation_panel"> 
+                 <a class="abutton" href="/categories">Категории</a>
+                 <a class="abutton" href="/vessels">Все Сосуды</a>
+                 <a class="abutton" href="/">Главная<a>
                  <!-- <button>Опросик</button> -->
             </nav>
     </header>
