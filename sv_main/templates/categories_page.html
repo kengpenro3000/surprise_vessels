@@ -19,78 +19,21 @@
          </nav>
     </header>
 
+
+
+    {% for cat in catlist %}
     <article>
-        <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
+    <figure>
+                <img src="{{cat.description}}"
+                 alt="тут дожна быть картинка категирии"
                  width="150px">
-                <figcaption>название категории</figcaption>
-        </figure>
-        <p class="cat_descr" >Lorem ipsum dolor sit amet consectetur, adipisicing
-             elit. Veritatis, commodi? Totam ea labore maiores rerum vel cumque
-              fugit corporis dolorem veniam sequi nulla, inventore itaque eum consectetur
-               fuga incidunt omnis?</p>
+                <figcaption>{{cat.name}}</figcaption>
+    </figure>
+        <p class="cat_descr" >{{cat.description}}</p>
     </article>
-        <article>
-                        <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название категории</figcaption>
-            </figure>
-        <p class="cat_descr" >Lorem ipsum dolor sit amet consectetur, adipisicing
-             elit. Veritatis, commodi? Totam ea labore maiores rerum vel cumque
-              fugit corporis dolorem veniam sequi nulla, inventore itaque eum consectetur
-               fuga incidunt omnis?</p>
-        </article>
-         <article>
-            <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название категории</figcaption>
-            </figure>
-        <p class="cat_descr" >Lorem ipsum dolor sit amet consectetur, adipisicing
-             elit. Veritatis, commodi? Totam ea labore maiores rerum vel cumque
-              fugit corporis dolorem veniam sequi nulla, inventore itaque eum consectetur
-               fuga incidunt omnis?</p>
-         </article>
-        <article>
-                        <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название категории</figcaption>
-            </figure>
-        <p class="cat_descr" >Lorem ipsum dolor sit amet consectetur, adipisicing
-             elit. Veritatis, commodi? Totam ea labore maiores rerum vel cumque
-              fugit corporis dolorem veniam sequi nulla, inventore itaque eum consectetur
-               fuga incidunt omnis?</p>
-        </article>
-         <article>
-            <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название категории</figcaption>
-            </figure>
-        <p class="cat_descr" >Lorem ipsum dolor sit amet consectetur, adipisicing
-             elit. Veritatis, commodi? Totam ea labore maiores rerum vel cumque
-              fugit corporis dolorem veniam sequi nulla, inventore itaque eum consectetur
-               fuga incidunt omnis?</p>
-        <article>
-            <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название категории</figcaption>
-            </figure>
-        <p class="cat_descr" >Lorem ipsum dolor sit amet consectetur, adipisicing
-             elit. Veritatis, commodi? Totam ea labore maiores rerum vel cumque
-              fugit corporis dolorem veniam sequi nulla, inventore itaque eum consectetur
-               fuga incidunt omnis?</p>
-        </article>
-        
+    {% endfor %}
+
+   
 
     <footer>
         <hr>

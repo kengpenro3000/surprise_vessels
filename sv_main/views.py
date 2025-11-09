@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from .models import *
 
 
 # Create your views here.
@@ -14,4 +15,6 @@ def vessels(request):
     return render(request, "vessels_page.html")
 
 def categories(request):
-    return render(request, "categories_page.html")
+    catlist = VesselCategory.objects.all().order_by("name")
+    template = loader.get_template("categories_page.html")
+    return HttpResponse(render(request, "categories_page.html", {"catlist" : catlist}))
