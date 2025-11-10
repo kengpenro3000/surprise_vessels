@@ -12,7 +12,8 @@ def poll(request):
     return render(request, "poll_page.html")
 
 def vessels(request):
-    return render(request, "vessels_page.html")
+    vesslist = Vessel.objects.all().order_by("name")
+    return render(request, "vessels_page.html", {"vesslist" : vesslist})
 
 def categories(request):
     catlist = VesselCategory.objects.all().order_by("name")

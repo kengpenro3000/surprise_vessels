@@ -24,10 +24,16 @@
     {% for cat in catlist %}
     <article>
     <figure>
-                <img src="{{cat.description}}"
-                 alt="тут дожна быть картинка категирии"
+                {% if cat.image %}
+                <img src= "{{cat.image.url}}"
+                 alt="тут должна быть картинка категирии"
                  width="150px">
                 <figcaption>{{cat.name}}</figcaption>
+                {% else %}
+                <img src="" 
+                     alt="Изображение отсутствует"
+                     width="200" height="150">
+                {% endif %}
     </figure>
         <p class="cat_descr" >{{cat.description}}</p>
     </article>

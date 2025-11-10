@@ -1,5 +1,6 @@
 figure { 
     display: inline-block;
+    text-align: center;
 }
 /*Header style*/
 
@@ -33,15 +34,32 @@ header {
 /*Mainb page style*/
 
 .main_poll{
+    /* text-decoration: none; */
     margin: 10px 5px 10px 5px;
     border-radius: 2px;
-    border: 5px solid hotpink;
+        background-image: 
+        linear-gradient(250deg, 
+            hotpink 0%,
+            rgb(182, 98, 38) 50%,
+            aquamarine 100%
+        );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
     display: inline-block;
     transition: 0.5s;
 }
 
 .main_poll:hover{
-    border: 5px solid aquamarine;
+    background-image:
+        linear-gradient(250deg, 
+            aquamarine 0%,
+            rgb(182, 98, 38) 50%,
+            hotpink 100%
+        );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     transform: scale(105%);
 }
 
@@ -51,5 +69,5 @@ header {
     display: inline-block;
     width: 50%;
     text-align: center;
-    transform: translateY(-200%);
+    /* transform: translateY(-200%); */
 }
