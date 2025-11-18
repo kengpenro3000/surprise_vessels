@@ -6,6 +6,7 @@ from .models import *
 
 # Create your views here.
 def mainpage (request):
+    vesslist = Vessel.objects.all
     return render(request, 'main_page.html')
 
 def poll(request):

@@ -2,11 +2,17 @@ figure {
     display: inline-block;
     text-align: center;
 }
+body {
+    background-color: #312C4C;
+    color: #c7784d;
+}
+
 /*Header style*/
 
 header {
-    background-color: blanchedalmond;
-    
+    background-color: #2A4965;
+    color: #AEA74D;
+    border-radius: ;
     
 }
 .navigation_panel{
@@ -15,23 +21,33 @@ header {
 
 }
 
+.top_text{
+    margin:1% 1%;
+    padding: 0.5% 0px 0px 0px;
+}
+
 .abutton{
     display: inline-block; 
-    margin: 0px 0px 0px 0px;
+    padding: 0.5% 0.75%;
+    /* margin: 0px 0px 0px 0px; */
     background-color: crimson;
     transition: transform 0.4s;
     display: inline-block;
+    border: 10px ;
+    border-color: black;
+    border-radius: 10% 
 }
 
 .abutton:hover{
     transform: scale(110%);
+    border-radius: 20%;
 }
 
 .test{
 
 }
 
-/*Mainb page style*/
+/*Main page style*/
 
 .main_poll{
     /* text-decoration: none; */
