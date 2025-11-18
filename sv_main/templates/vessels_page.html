@@ -23,7 +23,13 @@
             <img decoding="async" src="{{vess.image}}"
             alt="тут дожна быть картинка сосуда"
             width="150px">
-                <figcaption>{{vess.name|truncatechars:18}}</figcaption>
+                <figcaption>
+                    {%if vess.id%}
+                        <a href= "{% url 'single_vessel_page' vessel_id=vess.id %}" > {{vess.name|truncatechars:18}}</a>
+                    {%else%}
+                        {{vess.name|truncatechars:18}}
+                    {%endif%}
+                    </figcaption>
             </figure>
         {%endfor%}
     </main>

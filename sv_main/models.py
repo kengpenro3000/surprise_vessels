@@ -9,4 +9,4 @@ class Vessel(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="vessels/" , blank=True)
     description = models.TextField()
-    # category = 
+    category = models.ForeignKey(VesselCategory, on_delete=models.CASCADE, default=None, null=True)
