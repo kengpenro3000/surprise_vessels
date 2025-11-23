@@ -28,3 +28,10 @@ def categories(request, ):
     catlist = VesselCategory.objects.all().order_by("name")
     template = loader.get_template("categories_page.html")
     return HttpResponse(render(request, "categories_page.html", {"catlist" : catlist}))
+
+def single_category(request, category_id):
+    try:
+        category = VesselCategory.objects.get(pk = category_id)
+    except:
+        raise Http404("нет категории")
+    return HttpResponse(render(request, "category.html", {"category" : category}))

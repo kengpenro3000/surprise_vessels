@@ -81,8 +81,13 @@ header {
 
 /* Categories style */
 
+.category{
+    height: 10%;
+}
+
 .cat_descr{
     display: inline-block;
+    height: 10%;
     width: 50%;
     text-align: center;
     /* transform: translateY(-200%); */
