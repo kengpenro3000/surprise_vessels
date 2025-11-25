@@ -23,23 +23,18 @@
 
 
     {% for cat in catlist %}
-    <article class="category">
-    <figure>
-                {% if cat.image %}
+    <article >
+    <figure class="cats_figure">
                 <a href="{% url "single_category_page" category_id=cat.id %}">
-                <!-- <img src= "{{cat.image.url}}" -->
+
                 <img src= "https://bkacontent.com/wp-content/uploads/2016/06/Depositphotos_31146757_l-2015.webp"
                  alt="тут должна быть картинка категирии"
                  width="150px">
-                <figcaption>{{cat.name}}</figcaption>
+                <figcaption class="cats_name" >{{cat.name}}</figcaption>
                 </a>
-                {% else %}
-                <img src="" 
-                     alt="Изображение отсутствует"
-                     width="200" height="150">
-                {% endif %}
+
     </figure>
-        <p class="cat_descr" >{{cat.description}}</p>
+        <p class="cats_descr" >{{cat.description}}</p>
     </article>
     {% endfor %}
 

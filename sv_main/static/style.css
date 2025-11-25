@@ -85,10 +85,26 @@ header {
     height: 10%;
 }
 
-.cat_descr{
+.cats_figure{
+    width: 10%;
+}
+
+.cats_name{
+    width: 150px;
+}
+
+.cats_descr{
     display: inline-block;
-    height: 10%;
+    /* height: 10%; */
     width: 50%;
+    transform: translateY(-400%);
     text-align: center;
     /* transform: translateY(-200%); */
+}
+
+/* Category page */
+
+.cat_descr{
+    margin: 1% 1% 1% 0%;
+    padding: 1% 1% 1% 0%;
 }

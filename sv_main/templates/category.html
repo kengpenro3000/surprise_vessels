@@ -15,9 +15,33 @@
 
             </nav>
     </header>
-        <h1>{{ category.name }}</h1>
-        <img src="" alt=""image of vessel>
-        <p>{{ category.description }}</p>
+
+        <main>
+            <h1>{{ category.name }}</h1>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnTQ04WdzI8_nx_D7_gGQK5nyjsunQOHNm5g&scd" alt="image of vessel">
+            <p class="cat_descr">{{ category.description }}</p>
+
+            <hr>
+
+            {%for vess in vess_for%}
+            <figure>
+            <a href= "{% url 'single_vessel_page' vessel_id=vess.id %}" > 
+            <!-- <img decoding="async" src="{{vess.image}}" -->
+            <img src="https://www.advancedsciencenews.com/wp-content/uploads/2023/10/fly-d-AbufG7TqaZI-unsplash.jpg" 
+            alt="тут дожна быть картинка сосуда"
+            width="150px">
+                <figcaption>
+                    {%if vess.id%}
+                        {{vess.name|truncatechars:18}}
+                    {%else%}
+                        {{vess.name|truncatechars:18}}
+                    {%endif%}
+                    </figcaption>
+            </a>
+            </figure>
+            {%endfor%}
+        </main>
+
     
         
 

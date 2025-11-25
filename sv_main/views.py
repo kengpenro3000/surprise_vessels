@@ -32,6 +32,11 @@ def categories(request, ):
 def single_category(request, category_id):
     try:
         category = VesselCategory.objects.get(pk = category_id)
-    except:
+    except: 
         raise Http404("нет категории")
-    return HttpResponse(render(request, "category.html", {"category" : category}))
+    vess_for = Vessel.objects.filter(category = category)
+    return HttpResponse(render(request, "category.html", {"category" : category, "vess_for" : vess_for})) 
+
+# def vessel_for_category(request, category_id):
+#     vess_for = Vessel.objects.get(category = category_id)
+#     return render(request, "category.html", {"vess_for"})
