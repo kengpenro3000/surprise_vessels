@@ -23,8 +23,14 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True)
 
 class Results(models.Model):
-    results = {"a" : 0, "b" : 0, "c" : 0}
-    def decrees_for_one(self, a):
-        self.results[a] += 1
+    results = models.JSONField(default={"a" : 0, "b" : 0, "c" : 0})
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.results:
+            results = {"a" : 0, "b" : 0, "c" : 0}
+    
+    def increment_for_one(self, a):
+        self.results[a] += 1
+        self.save()
 

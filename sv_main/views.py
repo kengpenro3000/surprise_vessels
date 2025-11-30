@@ -14,7 +14,13 @@ def start_poll(request):
     return render(request, "poll_start.html")
 
 def poll(request):
-    return render(request, "poll_page.html")
+    # results = Results.objects.create()
+    results = Results.objects.get(pk = 23)
+    return render(request, "poll_page.html", {"res" : results})
+
+def poll_results(request):
+    return
+
 
 def vessels(request):
     vesslist = Vessel.objects.all().order_by("name")
@@ -39,6 +45,7 @@ def single_category(request, category_id):
         raise Http404("нет категории")
     vess_for = Vessel.objects.filter(category = category)
     return HttpResponse(render(request, "category.html", {"category" : category, "vess_for" : vess_for})) 
+
 
 # def vessel_for_category(request, category_id):
 #     vess_for = Vessel.objects.get(category = category_id)
