@@ -12,20 +12,13 @@
          <nav class="navigation_panel">
              <a class="abutton" href="{% url 'main_page' %}">Главная</a>
              <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
-             <a class="abutton" href="{% url 'poll_start' %}">Опросик</a>
              <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
          </nav>
     </header>
-        <h1>{{ vessel.name }}</h1>
-        <img src="https://www.advancedsciencenews.com/wp-content/uploads/2023/10/fly-d-AbufG7TqaZI-unsplash.jpg" alt=""image of vessel>
-        <p>{{ vessel.description }}</p>
-    
-        
 
-    <footer>
-        <hr>
-        <small>made by KengPenro (this part)</small>
-    </footer>
-    
+    <main>
+        <a href="/poll"> начать тест</a>
+    </main>
+
 </body>
 </html>

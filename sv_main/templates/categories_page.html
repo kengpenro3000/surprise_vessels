@@ -14,9 +14,9 @@
     <header class="top"> 
         <p class="top_text">Все сосуды с секретом.ком </p>
          <nav class="navigation_panel">
-             <a class="abutton" href="/">Главная</a>
-             <a class="abutton" href="/vessels">Все Сосуды</a>
-             <a class="abutton" href="/poll">Опросик</a>
+             <a class="abutton" href="{% url 'main_page' %}">Главная</a>
+             <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+             <a class="abutton" href="{% url 'poll_start' %}">Опросик</a>
          </nav>
     </header>
 

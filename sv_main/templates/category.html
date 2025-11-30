@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="/static/style.css?{% now "U" %}"/>
 </head>
 <body>
-    <header class="top"> Все сосуды с секретом.ком
-            <nav class="navigation_panel"> 
-                 <a class="abutton" href="/categories">Категории</a>
-                 <a class="abutton" href="/vessels">Все Сосуды</a>
-                 <a class="abutton" href="/">Главная<a>
-
-            </nav>
+    <header class="top"> 
+        <p class="top_text">Все сосуды с секретом.ком </p>
+         <nav class="navigation_panel">
+             <a class="abutton" href="{% url 'main_page' %}">Главная</a>
+             <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+             <a class="abutton" href="{% url 'poll_start' %}">Опросик</a>
+             <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
+         </nav>
     </header>
-
         <main>
             <h1>{{ category.name }}</h1>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnTQ04WdzI8_nx_D7_gGQK5nyjsunQOHNm5g&scd" alt="image of vessel">

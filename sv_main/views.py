@@ -10,6 +10,9 @@ def mainpage (request):
     vesslist = Vessel.objects.all
     return render(request, 'main_page.html')
 
+def start_poll(request):
+    return render(request, "poll_start.html")
+
 def poll(request):
     return render(request, "poll_page.html")
 
