@@ -6,45 +6,77 @@ from .models import *
 
 
 # Create your views here.
-def mainpage (request):
+def mainpage(request):
     vesslist = Vessel.objects.all
     return render(request, 'main_page.html')
+
 
 def start_poll(request):
     return render(request, "poll_start.html")
 
+
 def poll(request):
+
+    # сделать форму с вопросами и ответами
+
+    questions = Question.objects.all()
+    # ответы для каждого вопроса
+    answers = {}
+    for q in questions:
+        answers[q.id] = Answer.objects.filter(question=q)
+    # передать в шаблон вопросы и ответы
+    context = {
+        "questions": questions,
+        "answers": answers,
+    }
+
+    # рендерится пользовательская форма с вопросами и ответами
+    return render(request, "poll_page.html", context)
+
+    # кнопка отправить ловит ответы
+    # создается result
     # results = Results.objects.create()
-    results = Results.objects.get(pk = 23)
-    return render(request, "poll_page.html", {"res" : results})
+    # вызывается в result обсчет итогов
+    # results.calculate_nearest_cat()
+    # result.save()
+    #
+
+    # results = Results.objects.get(pk = 23)
+    # редиректом перейти на страницу с результатами
+
+    return render(request, "poll_page.html", {"res": results})
+
 
 def poll_results(request):
-    return
+    pass
 
 
 def vessels(request):
     vesslist = Vessel.objects.all().order_by("name")
-    return render(request, "vessels_page.html", {"vesslist" : vesslist})
+    return render(request, "vessels_page.html", {"vesslist": vesslist})
+
 
 def single_vessel(request, vessel_id):
     try:
-        vessel = Vessel.objects.get(pk = vessel_id)
+        vessel = Vessel.objects.get(pk=vessel_id)
     except:
         raise Http404("Нет сосуда")
-    return render(request, "vessel.html", {"vessel" : vessel})
+    return render(request, "vessel.html", {"vessel": vessel})
+
 
 def categories(request, ):
     catlist = VesselCategory.objects.all().order_by("name")
     template = loader.get_template("categories_page.html")
-    return HttpResponse(render(request, "categories_page.html", {"catlist" : catlist}))
+    return HttpResponse(render(request, "categories_page.html", {"catlist": catlist}))
+
 
 def single_category(request, category_id):
     try:
-        category = VesselCategory.objects.get(pk = category_id)
-    except: 
+        category = VesselCategory.objects.get(pk=category_id)
+    except:
         raise Http404("нет категории")
-    vess_for = Vessel.objects.filter(category = category)
-    return HttpResponse(render(request, "category.html", {"category" : category, "vess_for" : vess_for})) 
+    vess_for = Vessel.objects.filter(category=category)
+    return HttpResponse(render(request, "category.html", {"category": category, "vess_for": vess_for}))
 
 
 # def vessel_for_category(request, category_id):

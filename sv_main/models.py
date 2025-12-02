@@ -1,36 +1,62 @@
 from django.db import models
 
+
 class VesselCategory(models.Model):
     name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to="vessels_cats/" ,blank=True)
+    image = models.ImageField(upload_to="vessels_cats/", blank=True)
     description = models.TextField()
     rating = models.IntegerField(default=0)
 
+
 class Vessel(models.Model):
     name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to="vessels/" , blank=True)
+    image = models.ImageField(upload_to="vessels/", blank=True)
     description = models.TextField()
-    category = models.ForeignKey(VesselCategory, on_delete=models.CASCADE, default=None, null=True)
+    category = models.ForeignKey(
+        VesselCategory, on_delete=models.CASCADE, default=None, null=True)
+
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
+
 
 class Answer(models.Model):
     answer_text = models.CharField(max_length=200)
     weight_a = models.IntegerField()
     weight_b = models.IntegerField()
     weight_c = models.IntegerField()
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None, null=True)
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, default=None, null=True)
+
 
 class Results(models.Model):
-    results = models.JSONField(default={"a" : 0, "b" : 0, "c" : 0})
+    final_answer = models.JSONField(default={"a": 0, "b": 0, "c": 0})
+    final_cat = models.ForeignKey(
+        VesselCategory, on_delete=models.CASCADE, default=None, null=True)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        if not self.results:
-            results = {"a" : 0, "b" : 0, "c" : 0}
-    
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     if not self.results:
+    #         results = {"a" : 0, "b" : 0, "c" : 0}
+
     def increment_for_one(self, a):
         self.results[a] += 1
         self.save()
 
+    def increment(self, a, x):
+        rslt = self.results
+        rslt[a] += x
+        self.update(results=rslt)
+
+    def calculate_nearest_cat(self):
+
+        # найти радиус-векторы до всех категорий
+        # вынуть все поля с параметрами категорий
+        # форчиком пройтись по ним, посохранять пары [(категория, радиус-вектор)] (просто список с кортежами)
+        # найти наименьший
+
+        # вкусно:
+        # min(a, key = lambda elem: elem[1])
+        # напиши невкусно
+
+        # self.final_cat =  # заглушка
