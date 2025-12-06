@@ -1,76 +1,106 @@
-<!-- {% load static %} -->
+{% load static %}
 
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MAIN PAGE HOORAY</title>
-    <link rel="stylesheet" href="/static/style.css?{% now "U" %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все сосуды с секретом - Узнай, какой ты сосуд!</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now 'U' %}">
 </head>
 <body>
-    <header class="top"> 
-        <p class="top_text">Все сосуды с секретом.ком </p>
-         <nav class="navigation_panel">
-             <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
-             <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
-         </nav>
+    <header class="top">
+        <p class="top_text">Все сосуды с секретом.ком</p>
+        <nav class="navigation_panel">
+            <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+            <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
+        </nav>
     </header>
 
-    <main>
-        <!-- <div class="main_poll" >  -->
-             <a class="main_poll"  href="{% url 'poll_start' %}">Пройди тест и узнай, какой ты сосуд!!!</a>
-        <!-- </div> -->
-         <article>
-            <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название сосуда</figcaption>
-            </figure>
-            <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название сосуда</figcaption>
-            </figure>
-            <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название сосуда</figcaption>
-            </figure>
-         </article>
-        <article>
-                        <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название сосуда</figcaption>
-            </figure>
-            <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название сосуда</figcaption>
-            </figure>
-            <figure>
-                <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                 alt="тут дожна быть картинка сосуда"
-                 width="150px">
-                <figcaption>название сосуда</figcaption>
-            </figure>
-        </article>
-    </main>
+    <main class="main_page">
+        <section class="hero_section">
+            <div class="hero_content">
+                <h1 class="hero_title">Узнай, какой ты сосуд!</h1>
+                <p class="hero_subtitle">Пройди увлекательный тест и откройте для себя, какой древний сосуд отражает вашу личность</p>
+                <a href="{% url 'poll_start' %}" class="hero_button">Начать тест</a>
+            </div>
+            <div class="hero_decoration"></div>
+        </section>
 
+        <section class="featured_section">
+            <h2 class="section_title">Популярные сосуды</h2>
+            <div class="vessels_showcase">
+                <article class="showcase_card">
+                    <figure class="showcase_figure">
+                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                             alt="Популярный сосуд"
+                             loading="lazy">
+                        <figcaption>Сосуд 1</figcaption>
+                    </figure>
+                </article>
+                <article class="showcase_card">
+                    <figure class="showcase_figure">
+                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                             alt="Популярный сосуд"
+                             loading="lazy">
+                        <figcaption>Сосуд 2</figcaption>
+                    </figure>
+                </article>
+                <article class="showcase_card">
+                    <figure class="showcase_figure">
+                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                             alt="Популярный сосуд"
+                             loading="lazy">
+                        <figcaption>Сосуд 3</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section class="featured_section">
+            <h2 class="section_title">Рекомендуемые сосуды</h2>
+            <div class="vessels_showcase">
+                <article class="showcase_card">
+                    <figure class="showcase_figure">
+                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                             alt="Рекомендуемый сосуд"
+                             loading="lazy">
+                        <figcaption>Сосуд 4</figcaption>
+                    </figure>
+                </article>
+                <article class="showcase_card">
+                    <figure class="showcase_figure">
+                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                             alt="Рекомендуемый сосуд"
+                             loading="lazy">
+                        <figcaption>Сосуд 5</figcaption>
+                    </figure>
+                </article>
+                <article class="showcase_card">
+                    <figure class="showcase_figure">
+                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
+                             alt="Рекомендуемый сосуд"
+                             loading="lazy">
+                        <figcaption>Сосуд 6</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta_section">
+            <h2 class="cta_title">Готовы к приключению?</h2>
+            <p class="cta_text">Откройте всю коллекцию сосудов и найдите свой идеальный сосуд</p>
+            <div class="cta_buttons">
+                <a href="{% url 'vessels_page' %}" class="cta_button primary">Все Сосуды</a>
+                <a href="{% url 'categories_page' %}" class="cta_button secondary">Категории</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <hr>
-        <small>made by KengPenro (this part)</small>
+        <small>Made by KengPenro (this part)</small>
     </footer>
-    <!-- <h1>Hello, World!</h1>
-    <p>Welcome to the main page of the Surprise Vessels application.</p>
-    <p>It is very empty now</p> -->
-
 </body>
 </html>
 

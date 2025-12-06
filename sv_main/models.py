@@ -49,7 +49,7 @@ class Results(models.Model):
         self.update(results=rslt)
 
     def calculate_nearest_cat(self):
-
+        pass
         # найти радиус-векторы до всех категорий
         # вынуть все поля с параметрами категорий
         # форчиком пройтись по ним, посохранять пары [(категория, радиус-вектор)] (просто список с кортежами)
@@ -59,4 +59,4 @@ class Results(models.Model):
         # min(a, key = lambda elem: elem[1])
         # напиши невкусно
 
-        # self.final_cat =  # заглушка
+        # self.final_cat =   заглушка

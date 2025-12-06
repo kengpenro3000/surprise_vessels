@@ -1,24 +1,128 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/style.css?{% now "U" %}"/>
+    <title>Тест "Какой ты сосуд" - Все сосуды с секретом</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now 'U' %}">
 </head>
 <body>
-    <header class="top"> 
-        <p class="top_text">Все сосуды с секретом.ком </p>
-         <nav class="navigation_panel">
-             <a class="abutton" href="{% url 'main_page' %}">Главная</a>
-             <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
-             <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
-         </nav>
+    <header class="top">
+        <p class="top_text">Все сосуды с секретом.ком</p>
+        <nav class="navigation_panel">
+            <a class="abutton" href="{% url 'main_page' %}">Главная</a>
+            <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+            <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
+        </nav>
     </header>
 
-    <main>
-        <a href="/poll"> начать тест</a>
+    <main class="poll_start_main">
+        <div class="poll_start_container">
+            <!-- Hero section -->
+            <section class="poll_start_hero">
+                <div class="poll_start_content">
+                    <h1 class="poll_start_title">Какой ты сосуд?</h1>
+                    <p class="poll_start_subtitle">Раскройте свою подлинную сущность</p>
+                </div>
+                <div class="poll_start_decoration">
+                    <div class="decoration_circle"></div>
+                </div>
+            </section>
+
+            <!-- Main CTA section -->
+            <section class="poll_start_card">
+                <div class="poll_start_header">
+                    <h2 class="poll_start_card_title">Готовы к увлекательному путешествию?</h2>
+                    <p class="poll_start_description">
+                        Пройдите интерактивный тест и узнайте, какой древний сосуд отражает вашу личность. 
+                        Каждый вопрос приближает вас к открытию вашей сущности!
+                    </p>
+                </div>
+
+                <div class="poll_start_features">
+                    <div class="feature_item">
+                        <div class="feature_icon">⏱️</div>
+                        <div class="feature_text">
+                            <h3>Быстро</h3>
+                            <p>Всего 5-10 минут вашего времени</p>
+                        </div>
+                    </div>
+                    <div class="feature_item">
+                        <div class="feature_icon">✨</div>
+                        <div class="feature_text">
+                            <h3>Увлекательно</h3>
+                            <p>Интересные и забавные вопросы</p>
+                        </div>
+                    </div>
+                    <div class="feature_item">
+                        <div class="feature_icon">🎯</div>
+                        <div class="feature_text">
+                            <h3>Точно</h3>
+                            <p>Детальное описание вашего сосуда</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="poll_start_actions">
+                    <a href="/poll" class="poll_start_button primary">
+                        <span class="button_text">Начать тест</span>
+                        <span class="button_arrow">→</span>
+                    </a>
+                    <a href="{% url 'categories_page' %}" class="poll_start_button secondary">
+                        Узнать о сосудах
+                    </a>
+                </div>
+            </section>
+
+            <!-- Info section -->
+            <section class="poll_start_info">
+                <h2 class="info_section_title">Почему это интересно?</h2>
+                <div class="info_grid">
+                    <div class="info_card">
+                        <h3 class="info_card_title">🏺 Древние тайны</h3>
+                        <p class="info_card_text">Каждый сосуд имеет свою историю и символизм, уходящий корнями в глубокую древность.</p>
+                    </div>
+                    <div class="info_card">
+                        <h3 class="info_card_title">🔍 Самопознание</h3>
+                        <p class="info_card_text">Тест поможет вам лучше понять свои сильные стороны и особенности характера.</p>
+                    </div>
+                    <div class="info_card">
+                        <h3 class="info_card_title">🌟 Уникальные результаты</h3>
+                        <p class="info_card_text">Получите подробное описание вашего сосуда с характеристиками и интересными фактами.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ section -->
+            <section class="poll_start_faq">
+                <h2 class="faq_title">Часто задаваемые вопросы</h2>
+                <div class="faq_grid">
+                    <div class="faq_item">
+                        <h3 class="faq_question">📝 Сколько вопросов в тесте?</h3>
+                        <p class="faq_answer">Тест состоит из 10 вопросов, каждый из которых помогает определить ваш идеальный сосуд.</p>
+                    </div>
+                    <div class="faq_item">
+                        <h3 class="faq_question">⏳ Сколько времени займет тест?</h3>
+                        <p class="faq_answer">Обычно тест занимает 5-10 минут, в зависимости от того, как долго вы размышляете над ответами.</p>
+                    </div>
+                    <div class="faq_item">
+                        <h3 class="faq_question">📊 Что я получу в результате?</h3>
+                        <p class="faq_answer">Вы получите подробное описание вашего сосуда с характеристиками, историей и интересными фактами.</p>
+                    </div>
+                    <div class="faq_item">
+                        <h3 class="faq_question">🔄 Могу ли я пройти тест еще раз?</h3>
+                        <p class="faq_answer">Конечно! Вы можете пройти тест столько раз, сколько захотите, результаты могут измениться.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
+    <footer>
+        <hr>
+        <small>Made by KengPenro (this part)</small>
+    </footer>
 </body>
 </html>
