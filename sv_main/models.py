@@ -5,6 +5,7 @@ class VesselCategory(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="vessels_cats/", blank=True)
     description = models.TextField()
+    parameters = models.JSONField(default={"a": 0, "b": 0, "c": 0})
     rating = models.IntegerField(default=0)
 
 
@@ -48,8 +49,20 @@ class Results(models.Model):
         rslt[a] += x
         self.update(results=rslt)
 
-    def calculate_nearest_cat(self):
-        pass
+    def calculate_nearest_cat(self, results):
+        cats = []
+        min = float("inf")
+        min_cat_id = None
+        for cat in VesselCategory.objects.all():
+                rad_vector = ( (results["a"] - cat.parameters["a"])**2 + (results["b"] - cat.parameters["b"])**2 + (results["c"] - cat.parameters["c"])**2 )**(1//2)
+                cats.append((cat.name, rad_vector))
+
+        for par in cats:
+            i = 0
+            if min > par[1]:
+                min_cat_id = i
+            i += 1
+        self.final_cat = cats[min_cat_id][0]        
         # найти радиус-векторы до всех категорий
         # вынуть все поля с параметрами категорий
         # форчиком пройтись по ним, посохранять пары [(категория, радиус-вектор)] (просто список с кортежами)
