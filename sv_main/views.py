@@ -22,12 +22,12 @@ def poll(request):
     questions = Question.objects.all()
     # ответы для каждого вопроса
     answers = {}
-    for q in questions:
-        answers[q.id] = Answer.objects.filter(question=q)
+    # for q in questions:
+    #     answers[q.id] = Answer.objects.filter(question=q)
     # передать в шаблон вопросы и ответы
     context = {
         "questions": questions,
-        "answers": answers,
+        # "answers": answers,
     }
 
     # рендерится пользовательская форма с вопросами и ответами

@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +20,38 @@
     </header>
     
     <main>
-        <form action="{% url 'views.' %}" method="post">
-            {% for q in questions %}
-                {% for ans in answers|get_item:q.id  %} 
-                    <p>{{ans}}</p> 
-                {%endfor%}
-            {%endfor%} 
+        <form action="/vessel_form/" method="post">
+<fieldset class="radio-select-group">
+    {% for q in questions %}
+        <div class="question-block">
+            <legend class="question-title">{{ q.question_text }}</legend>
+            
+            <div class="radio-select-container">
+                {% for ans in q.answer_set.all %}
+                    <div class="radio-select-option">
+                        <input 
+                            type="radio" 
+                            id="answer_{{ ans.id }}_q{{ q.id }}" 
+                            name="question_{{ q.id }}" 
+                            value="{{ ans.id }}"
+                            class="radio-select-input"
+                        >
+                        <label 
+                            for="answer_{{ ans.id }}_q{{ q.id }}" 
+                            class="radio-select-label"
+                        >
+                            <span class="radio-select-text">{{ ans.answer_text }}</span>
+                            <span class="radio-select-checkmark"></span>
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</fieldset>  
+                        
+
+
         </form>
     </main>
     

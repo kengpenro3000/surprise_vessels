@@ -2427,3 +2427,125 @@ header.top {
         width: 100%;
     }
 }
+
+/* Basic Radio Select Styling */
+.radio-select-group {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fafafa;
+}
+
+.question-block {
+    margin-bottom: 25px;
+}
+
+.question-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.radio-select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radio-select-option {
+    position: relative;
+}
+
+.radio-select-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-select-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.radio-select-label:hover {
+    border-color: #4a90e2;
+    background: #f0f7ff;
+}
+
+.radio-select-input:checked + .radio-select-label {
+    border-color: #4a90e2;
+    background: #e8f2ff;
+}
+
+.radio-select-text {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.radio-select-checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.radio-select-input:checked + .radio-select-label .radio-select-checkmark {
+    border-color: #4a90e2;
+    background: #4a90e2;
+}
+
+.radio-select-checkmark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+.radio-select-input:checked + .radio-select-label .radio-select-checkmark::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.question-divider {
+    border: none;
+    border-top: 1px dashed #ddd;
+    margin: 20px 0;
+}
+
+/* Hover effects */
+.radio-select-label:hover .radio-select-checkmark {
+    border-color: #4a90e2;
+}
+
+/* Focus accessibility */
+.radio-select-input:focus + .radio-select-label {
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .radio-select-group {
+        padding: 15px;
+    }
+    
+    .radio-select-label {
+        padding: 10px 12px;
+    }
+}
