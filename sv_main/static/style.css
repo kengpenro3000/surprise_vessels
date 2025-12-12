@@ -2549,3 +2549,113 @@ header.top {
         padding: 10px 12px;
     }
 }
+
+/* ========== POLL PAGE: styles for templates that use plain <main> ========== */
+
+/* Ensure pages using a raw <main> get the same look as .poll_main */
+main {
+    min-height: calc(100vh - 280px);
+    padding: 3rem 2rem;
+    background: linear-gradient(180deg, #312C4C 0%, #2a2340 100%);
+    color: inherit;
+}
+
+main form {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.radio-select-group {
+    display: block;
+    background: rgba(42, 73, 101, 0.4);
+    border: 1px solid rgba(199, 120, 77, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    gap: 1.25rem;
+    backdrop-filter: blur(8px);
+}
+
+.question-block {
+    margin-bottom: 1.5rem;
+}
+
+.question-title,
+.radio-question-title {
+    display: block;
+    font-size: 1.5rem;
+    color: #AEA74D;
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+}
+
+.radio-select-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.radio-select-option {
+    display: block;
+}
+
+.radio-select-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.radio-select-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.95rem 1rem;
+    background: rgba(0,0,0,0.12);
+    border: 2px solid rgba(199,120,77,0.18);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    color: #c7784d;
+    font-weight: 600;
+}
+
+.radio-select-label:hover {
+    background: rgba(42,73,101,0.45);
+    border-color: #AEA74D;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(174,167,77,0.14);
+    color: #AEA74D;
+}
+
+.radio-select-input:checked + .radio-select-label {
+    background: linear-gradient(135deg, rgba(174,167,77,0.18) 0%, rgba(201,197,96,0.06) 100%);
+    border-color: #AEA74D;
+    box-shadow: 0 8px 25px rgba(174,167,77,0.18);
+    color: #312C4C;
+}
+
+.radio-select-text {
+    flex: 1 1 auto;
+    text-align: left;
+    color: inherit;
+}
+
+.radio-select-checkmark {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #AEA74D 0%, #c9c560 100%);
+    box-shadow: 0 4px 10px rgba(174,167,77,0.18);
+    flex: 0 0 28px;
+}
+
+.radio-select-input:checked + .radio-select-label .radio-select-checkmark {
+    transform: scale(1.05);
+}
+
+/* small screens */
+@media (max-width: 768px) {
+    main { padding: 2rem 1rem; }
+    .radio-select-container { grid-template-columns: 1fr; }
+}
+
