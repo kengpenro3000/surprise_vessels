@@ -54,15 +54,16 @@ class Results(models.Model):
         min = float("inf")
         min_cat_id = None
         for cat in VesselCategory.objects.all():
-                rad_vector = ( (results["a"] - cat.parameters["a"])**2 + (results["b"] - cat.parameters["b"])**2 + (results["c"] - cat.parameters["c"])**2 )**(1//2)
-                cats.append((cat.name, rad_vector))
+            rad_vector = ((results["a"] - cat.parameters["a"])**2 + (results["b"] -
+                          cat.parameters["b"])**2 + (results["c"] - cat.parameters["c"])**2)**(1//2)
+            cats.append((cat.name, rad_vector))
 
         for par in cats:
             i = 0
             if min > par[1]:
                 min_cat_id = i
             i += 1
-        self.final_cat = cats[min_cat_id][0]        
+        self.final_cat = cats[min_cat_id][0]
         # найти радиус-векторы до всех категорий
         # вынуть все поля с параметрами категорий
         # форчиком пройтись по ним, посохранять пары [(категория, радиус-вектор)] (просто список с кортежами)

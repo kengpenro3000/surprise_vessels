@@ -22,7 +22,7 @@
     <main class="category_main">
         <section class="category_detail_header">
             <div class="category_detail_image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnTQ04WdzI8_nx_D7_gGQK5nyjsunQOHNm5g&scd" 
+                <img src="{% if category.image %}{{ category.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" 
                      alt="{{ category.name }}"
                      loading="lazy">
             </div>
@@ -39,7 +39,7 @@
                 <article class="vessel_card">
                     <a href="{% url 'single_vessel_page' vessel_id=vess.id %}" class="vessel_link">
                         <div class="vessel_image_wrapper">
-                            <img src="https://www.advancedsciencenews.com/wp-content/uploads/2023/10/fly-d-AbufG7TqaZI-unsplash.jpg" 
+                            <img src="{% if vess.image %}{{ vess.image.url }}{% else %}{{ DEFAULT_VESSEL_IMAGE }}{% endif %}" 
                                  alt="{{ vess.name }}"
                                  loading="lazy">
                             <div class="vessel_overlay"></div>

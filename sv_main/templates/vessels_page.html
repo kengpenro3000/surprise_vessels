@@ -31,9 +31,15 @@
                     <a href="{% url 'single_vessel_page' vessel_id=vess.id %}" class="vessel_gallery_link">
                         <figure class="vessel_gallery_figure">
                             <div class="vessel_gallery_image">
-                                <img src="https://www.advancedsciencenews.com/wp-content/uploads/2023/10/fly-d-AbufG7TqaZI-unsplash.jpg"
-                                     alt="{{ vess.name }}"
-                                     loading="lazy">
+                                {% if vess.image %}
+                                    <img src="{{ vess.image.url }}"
+                                         alt="{{ vess.name }}"
+                                         loading="lazy">
+                                {% else %}
+                                    <img src="{{ DEFAULT_VESSEL_IMAGE }}"
+                                         alt="{{ vess.name }}"
+                                         loading="lazy">
+                                {% endif %}
                                 <div class="vessel_gallery_overlay"></div>
                             </div>
                             <figcaption class="vessel_gallery_caption">{{ vess.name|truncatechars:25 }}</figcaption>
