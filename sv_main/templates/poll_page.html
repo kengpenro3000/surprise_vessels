@@ -19,46 +19,108 @@
         </nav>
     </header>
     
-    <main>
-        <form action="{% url 'poll_results_page' %}" method="post">
-            {% csrf_token %}
-<fieldset class="radio-select-group">
-    {% for q in questions %}
-        <div class="question-block">
-            <legend class="question-title">{{ q.question_text }}</legend>
-            
-            <div class="radio-select-container">
-                {% for ans in q.answer_set.all %}
-                    <div class="radio-select-option">
-                        <input 
-                            type="radio" 
-                            id="answer_{{ ans.id }}_q{{ q.id }}" 
-                            name="question_{{ q.id }}" 
-                            value="{{ ans.weigth }}"
-                            class="radio-select-input"
-                        >
-                        <label 
-                            for="answer_{{ ans.id }}_q{{ q.id }}" 
-                            class="radio-select-label"
-                        >
-                            <span class="radio-select-text">{{ ans.answer_text }}</span>
-                            <!-- <span class="radio-select-checkmark"></span> -->
-                        </label>
+    <main class="poll_main">
+        <div class="poll_container">
+            <section class="poll_header">
+                <h1 class="poll_title">Тест "Какой ты сосуд"</h1>
+                <p class="poll_subtitle">Ответьте на вопросы, чтобы узнать свой тип сосуда</p>
+            </section>
+
+            <section class="poll_progress">
+                <div class="progress_bar">
+                    <div class="progress_fill" id="progress-fill"></div>
+                </div>
+                <p class="progress_text" id="progress-text">Вопрос 1 из {{ questions|length }}</p>
+            </section>
+
+            <form action="{% url 'poll_results_page' %}" method="post" id="poll-form">
+                {% csrf_token %}
+                <section class="poll_content" id="poll-content">
+                    {% for q in questions %}
+                    <div class="question_container" data-question="{{ forloop.counter }}" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
+                        <h2 class="question_text">{{ q.question_text }}</h2>
+                        <div class="answers_grid">
+                            {% for ans in q.answer_set.all %}
+                            <div class="radio-select-option">
+                                <input 
+                                    type="radio" 
+                                    id="answer_{{ ans.id }}_q{{ q.id }}" 
+                                    name="question_{{ q.id }}" 
+                                    value="{{ ans.weigth }}"
+                                    class="radio-select-input"
+                                >
+                                <label 
+                                    for="answer_{{ ans.id }}_q{{ q.id }}" 
+                                    class="radio-select-label answer_button"
+                                >
+                                    <span class="radio-select-text answer_text">{{ ans.answer_text }}</span>
+                                </label>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                {% endfor %}
-            </div>
+                    {% endfor %}
+                </section>
+
+                <section class="poll_actions">
+                    <button type="button" class="poll_button secondary" id="prev-btn" disabled>Предыдущий</button>
+                    <button type="button" class="poll_button primary" id="next-btn">Следующий</button>
+                    <button type="submit" class="poll_button primary" id="submit-btn" style="display: none;">Отправить</button>
+                </section>
+            </form>
         </div>
-    {% endfor %}
-</fieldset>  
-    <button type="submit">тут кнопочка субмит</button>                        
-
-
-        </form>
     </main>
     
     <footer>
         <hr>
         <small>Made by KengPenro (this part)</small>
     </footer>
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = {{ questions|length }};
+        const questions = document.querySelectorAll('.question_container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            progressFill.style.width = progress + '%';
+            progressText.textContent = `Вопрос ${currentQuestion} из ${totalQuestions}`;
+        }
+
+        function showQuestion(questionNumber) {
+            questions.forEach(q => q.style.display = 'none');
+            document.querySelector(`[data-question="${questionNumber}"]`).style.display = 'block';
+            prevBtn.disabled = questionNumber === 1;
+            if (questionNumber === totalQuestions) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+            }
+            updateProgress();
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        // Initial
+        showQuestion(currentQuestion);
+    </script>
 </body>
 </html>

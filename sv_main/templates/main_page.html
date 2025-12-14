@@ -28,73 +28,19 @@
         </section>
 
         <section class="featured_section">
-            <h2 class="section_title">Популярные сосуды</h2>
+            <h2 class="section_title">Популярные категории</h2>
             <div class="vessels_showcase">
-                <article class="showcase_card">
+                {% for pop_cat in pop_catslist %}
+                <a href="{% url 'single_category_page' pop_cat.id %}" class="showcase_card">
                     <figure class="showcase_figure">
-                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                             alt="Популярный сосуд"
-                             loading="lazy">
-                        <figcaption>Сосуд 1</figcaption>
+                        <img src="{% if pop_cat.image %}{{ pop_cat.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" alt="{{ pop_cat.name }}">
+                        <figcaption>{{ pop_cat.name }} ({{ pop_cat.rating }})</figcaption>
                     </figure>
-                </article>
-                <article class="showcase_card">
-                    <figure class="showcase_figure">
-                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                             alt="Популярный сосуд"
-                             loading="lazy">
-                        <figcaption>Сосуд 2</figcaption>
-                    </figure>
-                </article>
-                <article class="showcase_card">
-                    <figure class="showcase_figure">
-                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                             alt="Популярный сосуд"
-                             loading="lazy">
-                        <figcaption>Сосуд 3</figcaption>
-                    </figure>
-                </article>
+                </a>
+                {% endfor %}
             </div>
         </section>
-
-        <section class="featured_section">
-            <h2 class="section_title">Рекомендуемые сосуды</h2>
-            <div class="vessels_showcase">
-                <article class="showcase_card">
-                    <figure class="showcase_figure">
-                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                             alt="Рекомендуемый сосуд"
-                             loading="lazy">
-                        <figcaption>Сосуд 4</figcaption>
-                    </figure>
-                </article>
-                <article class="showcase_card">
-                    <figure class="showcase_figure">
-                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                             alt="Рекомендуемый сосуд"
-                             loading="lazy">
-                        <figcaption>Сосуд 5</figcaption>
-                    </figure>
-                </article>
-                <article class="showcase_card">
-                    <figure class="showcase_figure">
-                        <img src="https://www.vsp.ru/files/2015/07/14/36412.jpg"
-                             alt="Рекомендуемый сосуд"
-                             loading="lazy">
-                        <figcaption>Сосуд 6</figcaption>
-                    </figure>
-                </article>
-            </div>
-        </section>
-
-        <section class="cta_section">
-            <h2 class="cta_title">Готовы к приключению?</h2>
-            <p class="cta_text">Откройте всю коллекцию сосудов и найдите свой идеальный сосуд</p>
-            <div class="cta_buttons">
-                <a href="{% url 'vessels_page' %}" class="cta_button primary">Все Сосуды</a>
-                <a href="{% url 'categories_page' %}" class="cta_button secondary">Категории</a>
-            </div>
-        </section>
+      
     </main>
 
     <footer>

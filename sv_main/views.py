@@ -6,13 +6,15 @@ from .models import *
 from .constants import DEFAULT_VESSEL_IMAGE, DEFAULT_CATEGORY_IMAGE
 
 
-# Create your views here.
+
 def mainpage(request):
-    vesslist = Vessel.objects.all
+    pop_catslist = VesselCategory.objects.order_by("-rating")[:3]
     return render(request, 'main_page.html', {
         'DEFAULT_VESSEL_IMAGE': DEFAULT_VESSEL_IMAGE,
         'DEFAULT_CATEGORY_IMAGE': DEFAULT_CATEGORY_IMAGE,
+        "pop_catslist": pop_catslist
     })
+
 
 
 def start_poll(request):

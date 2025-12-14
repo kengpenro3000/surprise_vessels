@@ -65,8 +65,12 @@ class Results(models.Model):
         i = 0
         for par in cats:
             if min > par[1]:
+                min = par[1]
                 min_cat_id = i
             i += 1
+        cats[min_cat_id][0].rating += 1
+        cats[min_cat_id][0].save()
+        print(cats[min_cat_id][0].rating)
         self.final_cat = cats[min_cat_id][0]
         # найти радиус-векторы до всех категорий
         # вынуть все поля с параметрами категорий
