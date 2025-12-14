@@ -8,6 +8,9 @@ class VesselCategory(models.Model):
     parameters = models.JSONField(default={"a": 0, "b": 0, "c": 0})
     rating = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.name
+
 
 class Vessel(models.Model):
     name = models.CharField(max_length=50)
@@ -16,6 +19,9 @@ class Vessel(models.Model):
     category = models.ForeignKey(
         VesselCategory, on_delete=models.CASCADE, default=None, null=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -23,9 +29,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     answer_text = models.CharField(max_length=200)
-    weight_a = models.IntegerField()
-    weight_b = models.IntegerField()
-    weight_c = models.IntegerField()
+    weigth = models.JSONField(default="0 0 0")
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, default=None, null=True)
 
@@ -55,11 +59,11 @@ class Results(models.Model):
         min_cat_id = None
         for cat in VesselCategory.objects.all():
             rad_vector = ((results["a"] - cat.parameters["a"])**2 + (results["b"] -
-                          cat.parameters["b"])**2 + (results["c"] - cat.parameters["c"])**2)**(1//2)
-            cats.append((cat.name, rad_vector))
-
+                          cat.parameters["b"])**2 + (results["c"] - cat.parameters["c"])**2)**(1/2)
+            cats.append((cat, rad_vector))
+        print(cats, "|" , results["a"], results["b"], results["c"])
+        i = 0
         for par in cats:
-            i = 0
             if min > par[1]:
                 min_cat_id = i
             i += 1

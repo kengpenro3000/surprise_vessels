@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django.shortcuts import Http404
@@ -50,9 +50,46 @@ def poll(request):
 
     return render(request, "poll_page.html", {"res": results})
 
-
 def poll_results(request):
-    pass
+    results = Results.objects.create()
+    cont = 0
+    answer_parameters = {"a": 0,"b": 0,"c": 0}
+
+    if request.method == "POST":
+        for key, value in request.POST.items():
+            if cont == 0:
+                cont += 1 
+                continue
+            print(value)
+            answer_parameters["a"] += int(value.split()[0])
+            answer_parameters["b"] += int(value.split()[1])
+            answer_parameters["c"] += int(value.split()[2])
+
+    results.calculate_nearest_cat(answer_parameters)
+
+    context = {
+        "a": answer_parameters["a"],
+        "b": answer_parameters["b"],
+        "c": answer_parameters["c"],
+        "final_cat": results.final_cat
+    }
+
+    return render(request, "poll_results.html", context) 
+
+
+def form_test_res(request):
+    context = {}
+    if request.method == "POST":
+         for key, value in request.POST.items():
+            request.session["post_key"] = key
+            request.session["post_value"] = value
+    return redirect("form_test_page")
+
+
+def form_test(request):
+    keys = request.session.get("post_key", None)
+    values = request.session.get("post_value", None)
+    return render(request, "form_test.html", {"keys": keys, "values": values})
 
 
 def vessels(request):

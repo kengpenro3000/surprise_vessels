@@ -20,7 +20,8 @@
     </header>
     
     <main>
-        <form action="/vessel_form/" method="post">
+        <form action="{% url 'poll_results_page' %}" method="post">
+            {% csrf_token %}
 <fieldset class="radio-select-group">
     {% for q in questions %}
         <div class="question-block">
@@ -33,11 +34,11 @@
                             type="radio" 
                             id="answer_{{ ans.id }}_q{{ q.id }}" 
                             name="question_{{ q.id }}" 
-                            value="{{ ans.id }}"
+                            value="{{ ans.weigth }}"
                             class="radio-select-input"
                         >
                         <label 
-                            for="vessel_form" 
+                            for="answer_{{ ans.id }}_q{{ q.id }}" 
                             class="radio-select-label"
                         >
                             <span class="radio-select-text">{{ ans.answer_text }}</span>
