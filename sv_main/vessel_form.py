@@ -1,4 +1,4 @@
 from django import forms
 
-class Vessel_form(forms.Form):
-    vessel_form = froms.JSONField()
+class Item_form(forms.Form):
+    item_form = forms.JSONField()

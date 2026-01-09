@@ -1,23 +1,27 @@
 from django.db import models
 
 
-class VesselCategory(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="vessels_cats/", blank=True)
     description = models.TextField()
     parameters = models.JSONField(default={"a": 0, "b": 0, "c": 0})
     rating = models.IntegerField(default=0)
 
+    class Meta:
+        db_table = 'sv_main_vesselcategory'
+
     def __str__(self):
         return self.name
 
 
-class Vessel(models.Model):
+class Item(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="vessels/", blank=True)
     description = models.TextField()
     category = models.ForeignKey(
-        VesselCategory, on_delete=models.CASCADE, default=None, null=True)
+        Category, on_delete=models.CASCADE, default=None, null=True)
+
 
     def __str__(self):
         return self.name
@@ -37,7 +41,7 @@ class Answer(models.Model):
 class Results(models.Model):
     final_answer = models.JSONField(default={"a": 0, "b": 0, "c": 0})
     final_cat = models.ForeignKey(
-        VesselCategory, on_delete=models.CASCADE, default=None, null=True)
+        Category, on_delete=models.CASCADE, default=None, null=True)
 
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
@@ -57,7 +61,7 @@ class Results(models.Model):
         cats = []
         min = float("inf")
         min_cat_id = None
-        for cat in VesselCategory.objects.all():
+        for cat in Category.objects.all():
             rad_vector = ((results["a"] - cat.parameters["a"])**2 + (results["b"] -
                           cat.parameters["b"])**2 + (results["c"] - cat.parameters["c"])**2)**(1/2)
             cats.append((cat, rad_vector))

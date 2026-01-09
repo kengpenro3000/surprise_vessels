@@ -214,8 +214,8 @@ header.top {
     letter-spacing: 0.5px;
 }
 
-/* Vessels showcase grid */
-.vessels_showcase {
+/* Items showcase grid */
+.items_showcase {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
@@ -391,7 +391,7 @@ header.top {
         margin: 1rem 0;
     }
 
-    .vessels_showcase {
+    .items_showcase {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 1.5rem;
     }
@@ -425,7 +425,7 @@ header.top {
         margin-bottom: 2rem;
     }
 
-    .vessels_showcase {
+    .items_showcase {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 1rem;
         padding: 0;
@@ -714,14 +714,14 @@ header.top {
     opacity: 0.95;
 }
 
-/* Vessels section */
-.vessels_section {
+/* Items section */
+.items_section {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
-.vessels_section_title {
+.items_section_title {
     font-size: 2rem;
     color: #AEA74D;
     text-align: center;
@@ -730,15 +730,15 @@ header.top {
     letter-spacing: 0.3px;
 }
 
-/* Grid for vessel cards */
-.vessels_grid {
+/* Grid for item cards */
+.items_grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1.5rem;
 }
 
-/* Individual vessel card */
-.vessel_card {
+/* Individual item card */
+.item_card {
     background: rgba(42, 73, 101, 0.3);
     border: 1px solid rgba(199, 120, 77, 0.3);
     border-radius: 12px;
@@ -748,7 +748,7 @@ header.top {
     flex-direction: column;
 }
 
-.vessel_card:hover {
+.item_card:hover {
     transform: translateY(-6px);
     border-color: #AEA74D;
     box-shadow: 0 12px 30px rgba(174, 167, 77, 0.2),
@@ -756,8 +756,8 @@ header.top {
     background: rgba(42, 73, 101, 0.5);
 }
 
-/* Vessel link */
-.vessel_link {
+/* Item link */
+.item_link {
     text-decoration: none;
     color: inherit;
     display: flex;
@@ -765,8 +765,8 @@ header.top {
     height: 100%;
 }
 
-/* Vessel image wrapper */
-.vessel_image_wrapper {
+/* Item image wrapper */
+.item_image_wrapper {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
@@ -774,7 +774,7 @@ header.top {
     background: linear-gradient(135deg, rgba(182, 98, 38, 0.2), rgba(174, 167, 77, 0.2));
 }
 
-.vessel_image_wrapper img {
+.item_image_wrapper img {
     position: absolute;
     top: 0;
     left: 0;
@@ -784,7 +784,7 @@ header.top {
     transition: transform 0.4s ease;
 }
 
-.vessel_overlay {
+.item_overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -795,16 +795,16 @@ header.top {
     pointer-events: none;
 }
 
-.vessel_card:hover .vessel_image_wrapper img {
+.item_card:hover .item_image_wrapper img {
     transform: scale(1.08);
 }
 
-.vessel_card:hover .vessel_overlay {
+.item_card:hover .item_overlay {
     background: rgba(0, 0, 0, 0.05);
 }
 
-/* Vessel content */
-.vessel_content {
+/* Item content */
+.item_content {
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -812,8 +812,8 @@ header.top {
     flex: 1;
 }
 
-/* Vessel name */
-.vessel_name {
+/* Item name */
+.item_name {
     font-size: 0.95rem;
     font-weight: 600;
     color: #AEA74D;
@@ -823,7 +823,7 @@ header.top {
     line-height: 1.4;
 }
 
-.vessel_card:hover .vessel_name {
+.item_card:hover .item_name {
     color: #c9c560;
 }
 
@@ -853,12 +853,12 @@ header.top {
         font-size: 1rem;
     }
 
-    .vessels_section_title {
+    .items_section_title {
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
     }
 
-    .vessels_grid {
+    .items_grid {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 1rem;
     }
@@ -874,16 +874,16 @@ header.top {
         font-size: 0.95rem;
     }
 
-    .vessels_section_title {
+    .items_section_title {
         font-size: 1.3rem;
     }
 
-    .vessels_grid {
+    .items_grid {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 0.75rem;
     }
 
-    .vessel_content {
+    .item_content {
         padding: 0.75rem;
     }
 }
@@ -1688,20 +1688,20 @@ header.top {
     }
 }
 
-/* ========== VESSEL DETAIL PAGE STYLES ========== */
+/* ========== ITEM DETAIL PAGE STYLES ========== */
 
-.vessel_main {
+.item_main {
     min-height: calc(100vh - 280px);
     background: linear-gradient(180deg, #312C4C 0%, #2a2340 100%);
 }
 
-.vessel_container {
+.item_container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Vessel hero section */
-.vessel_hero {
+/* Item hero section */
+.item_hero {
     position: relative;
     height: 500px;
     overflow: hidden;
@@ -1709,7 +1709,7 @@ header.top {
     margin-bottom: 3rem;
 }
 
-.vessel_hero_image {
+.item_hero_image {
     position: absolute;
     top: 0;
     left: 0;
@@ -1717,18 +1717,18 @@ header.top {
     height: 100%;
 }
 
-.vessel_hero_image img {
+.item_hero_image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-.vessel_hero:hover .vessel_hero_image img {
+.item_hero:hover .item_hero_image img {
     transform: scale(1.05);
 }
 
-.vessel_hero_overlay {
+.item_hero_overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -1737,7 +1737,7 @@ header.top {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(49, 44, 76, 0.6) 100%);
 }
 
-.vessel_hero_content {
+.item_hero_content {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1747,7 +1747,7 @@ header.top {
     z-index: 1;
 }
 
-.vessel_hero_title {
+.item_hero_title {
     font-size: 3.5rem;
     color: #AEA74D;
     margin: 0 0 0.5rem 0;
@@ -1756,7 +1756,7 @@ header.top {
     line-height: 1.1;
 }
 
-.vessel_hero_subtitle {
+.item_hero_subtitle {
     font-size: 1.2rem;
     color: #c7784d;
     margin: 0;
@@ -1764,12 +1764,12 @@ header.top {
     font-style: italic;
 }
 
-/* Vessel description section */
-.vessel_description_section {
+/* Item description section */
+.item_description_section {
     padding: 0 2rem 3rem 2rem;
 }
 
-.vessel_description_card {
+.item_description_card {
     background: rgba(42, 73, 101, 0.4);
     border: 1px solid rgba(199, 120, 77, 0.3);
     border-radius: 16px;
@@ -1777,7 +1777,7 @@ header.top {
     backdrop-filter: blur(10px);
 }
 
-.vessel_section_title {
+.item_section_title {
     font-size: 2rem;
     color: #AEA74D;
     margin: 0 0 1.5rem 0;
@@ -1785,7 +1785,7 @@ header.top {
     letter-spacing: 0.5px;
 }
 
-.vessel_description_text {
+.item_description_text {
     font-size: 1.1rem;
     color: #c7784d;
     margin: 0;
@@ -1793,13 +1793,13 @@ header.top {
     opacity: 0.95;
 }
 
-/* Vessel info section */
-.vessel_info_section {
+/* Item info section */
+.item_info_section {
     padding: 3rem 2rem;
     background: rgba(0, 0, 0, 0.2);
 }
 
-.vessel_info_grid {
+.item_info_grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
@@ -1807,7 +1807,7 @@ header.top {
     margin: 0 auto;
 }
 
-.vessel_info_card {
+.item_info_card {
     background: rgba(42, 73, 101, 0.35);
     border: 1px solid rgba(199, 120, 77, 0.3);
     border-radius: 12px;
@@ -1816,7 +1816,7 @@ header.top {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.vessel_info_card:hover {
+.item_info_card:hover {
     background: rgba(42, 73, 101, 0.55);
     border-color: #AEA74D;
     transform: translateY(-8px);
@@ -1829,7 +1829,7 @@ header.top {
     transition: transform 0.3s ease;
 }
 
-.vessel_info_card:hover .info_icon {
+.item_info_card:hover .info_icon {
     transform: scale(1.1);
 }
 
@@ -1849,16 +1849,16 @@ header.top {
     opacity: 0.85;
 }
 
-.vessel_info_card:hover .info_card_text {
+.item_info_card:hover .info_card_text {
     opacity: 1;
 }
 
-/* Vessel CTA section */
-.vessel_cta_section {
+/* Item CTA section */
+.item_cta_section {
     padding: 3rem 2rem;
 }
 
-.vessel_cta_content {
+.item_cta_content {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
@@ -1868,7 +1868,7 @@ header.top {
     padding: 3rem;
 }
 
-.vessel_cta_title {
+.item_cta_title {
     font-size: 2.2rem;
     color: #AEA74D;
     margin: 0 0 1rem 0;
@@ -1876,7 +1876,7 @@ header.top {
     letter-spacing: 0.5px;
 }
 
-.vessel_cta_text {
+.item_cta_text {
     font-size: 1.1rem;
     color: #c7784d;
     margin: 0 0 2rem 0;
@@ -1884,14 +1884,14 @@ header.top {
     opacity: 0.95;
 }
 
-.vessel_cta_buttons {
+.item_cta_buttons {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.vessel_cta_button {
+.item_cta_button {
     display: inline-block;
     padding: 1rem 2.5rem;
     text-decoration: none;
@@ -1902,24 +1902,24 @@ header.top {
     letter-spacing: 0.4px;
 }
 
-.vessel_cta_button.primary {
+.item_cta_button.primary {
     background: linear-gradient(135deg, #AEA74D 0%, #c9c560 100%);
     color: #312C4C;
     box-shadow: 0 10px 30px rgba(174, 167, 77, 0.3);
 }
 
-.vessel_cta_button.primary:hover {
+.item_cta_button.primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(174, 167, 77, 0.4);
 }
 
-.vessel_cta_button.secondary {
+.item_cta_button.secondary {
     background: transparent;
     color: #AEA74D;
     border: 2px solid #AEA74D;
 }
 
-.vessel_cta_button.secondary:hover {
+.item_cta_button.secondary:hover {
     background: #AEA74D;
     color: #312C4C;
     transform: translateY(-3px);
@@ -1927,125 +1927,125 @@ header.top {
 
 /* Responsive design */
 @media (max-width: 1024px) {
-    .vessel_hero {
+    .item_hero {
         height: 400px;
     }
 
-    .vessel_hero_title {
+    .item_hero_title {
         font-size: 2.8rem;
     }
 
-    .vessel_hero_subtitle {
+    .item_hero_subtitle {
         font-size: 1.1rem;
     }
 }
 
 @media (max-width: 768px) {
-    .vessel_hero {
+    .item_hero {
         height: 300px;
         margin-bottom: 2rem;
     }
 
-    .vessel_hero_content {
+    .item_hero_content {
         padding: 2rem 1rem;
     }
 
-    .vessel_hero_title {
+    .item_hero_title {
         font-size: 2rem;
         margin-bottom: 0.25rem;
     }
 
-    .vessel_hero_subtitle {
+    .item_hero_subtitle {
         font-size: 1rem;
     }
 
-    .vessel_description_section {
+    .item_description_section {
         padding: 0 1rem 2rem 1rem;
     }
 
-    .vessel_description_card {
+    .item_description_card {
         padding: 1.5rem;
     }
 
-    .vessel_section_title {
+    .item_section_title {
         font-size: 1.5rem;
     }
 
-    .vessel_description_text {
+    .item_description_text {
         font-size: 1rem;
     }
 
-    .vessel_info_section {
+    .item_info_section {
         padding: 2rem 1rem;
     }
 
-    .vessel_info_grid {
+    .item_info_grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
-    .vessel_cta_section {
+    .item_cta_section {
         padding: 2rem 1rem;
     }
 
-    .vessel_cta_content {
+    .item_cta_content {
         padding: 2rem;
     }
 
-    .vessel_cta_title {
+    .item_cta_title {
         font-size: 1.8rem;
     }
 
-    .vessel_cta_text {
+    .item_cta_text {
         font-size: 1rem;
     }
 
-    .vessel_cta_buttons {
+    .item_cta_buttons {
         gap: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .vessel_hero {
+    .item_hero {
         height: 250px;
         margin-bottom: 1.5rem;
     }
 
-    .vessel_hero_content {
+    .item_hero_content {
         padding: 1.5rem 1rem;
     }
 
-    .vessel_hero_title {
+    .item_hero_title {
         font-size: 1.6rem;
     }
 
-    .vessel_hero_subtitle {
+    .item_hero_subtitle {
         font-size: 0.95rem;
     }
 
-    .vessel_description_section {
+    .item_description_section {
         padding: 0 1rem 1.5rem 1rem;
     }
 
-    .vessel_description_card {
+    .item_description_card {
         padding: 1.25rem;
     }
 
-    .vessel_section_title {
+    .item_section_title {
         font-size: 1.3rem;
         margin-bottom: 1rem;
     }
 
-    .vessel_description_text {
+    .item_description_text {
         font-size: 0.95rem;
         line-height: 1.6;
     }
 
-    .vessel_info_section {
+    .item_info_section {
         padding: 1.5rem 1rem;
     }
 
-    .vessel_info_card {
+    .item_info_card {
         padding: 1.5rem;
     }
 
@@ -2062,51 +2062,51 @@ header.top {
         font-size: 0.9rem;
     }
 
-    .vessel_cta_section {
+    .item_cta_section {
         padding: 1.5rem 1rem;
     }
 
-    .vessel_cta_content {
+    .item_cta_content {
         padding: 1.5rem;
     }
 
-    .vessel_cta_title {
+    .item_cta_title {
         font-size: 1.5rem;
         margin-bottom: 0.75rem;
     }
 
-    .vessel_cta_text {
+    .item_cta_text {
         font-size: 0.95rem;
         margin-bottom: 1.5rem;
     }
 
-    .vessel_cta_buttons {
+    .item_cta_buttons {
         flex-direction: column;
     }
 
-    .vessel_cta_button {
+    .item_cta_button {
         width: 100%;
         padding: 0.9rem 1.5rem;
     }
 }
 
-/* ========== VESSELS PAGE STYLES ========== */
+/* ========== ITEMS PAGE STYLES ========== */
 
-.vessels_page_main {
+.items_page_main {
     min-height: calc(100vh - 280px);
     padding-bottom: 3rem;
     background: linear-gradient(180deg, #312C4C 0%, #2a2340 100%);
 }
 
-/* Vessels header section */
-.vessels_header {
+/* Items header section */
+.items_header {
     text-align: center;
     padding: 4rem 2rem 3rem 2rem;
     max-width: 900px;
     margin: 0 auto;
 }
 
-.vessels_title {
+.items_title {
     font-size: 3.5rem;
     color: #AEA74D;
     margin: 0 0 1rem 0;
@@ -2119,7 +2119,7 @@ header.top {
     -webkit-text-fill-color: transparent;
 }
 
-.vessels_subtitle {
+.items_subtitle {
     font-size: 1.2rem;
     color: #c7784d;
     margin: 0;
@@ -2127,14 +2127,14 @@ header.top {
     opacity: 0.95;
 }
 
-/* Vessels gallery container */
-.vessels_gallery_container {
+/* Items gallery container */
+.items_gallery_container {
     padding: 0 2rem;
     margin-bottom: 4rem;
 }
 
 /* Gallery grid */
-.vessels_gallery {
+.items_gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 2rem;
@@ -2142,8 +2142,8 @@ header.top {
     margin: 0 auto;
 }
 
-/* Individual vessel gallery card */
-.vessel_gallery_card {
+/* Individual item gallery card */
+.item_gallery_card {
     background: rgba(42, 73, 101, 0.3);
     border: 1px solid rgba(199, 120, 77, 0.3);
     border-radius: 16px;
@@ -2152,7 +2152,7 @@ header.top {
     height: 100%;
 }
 
-.vessel_gallery_card:hover {
+.item_gallery_card:hover {
     transform: translateY(-10px);
     border-color: #AEA74D;
     box-shadow: 0 20px 50px rgba(174, 167, 77, 0.25),
@@ -2161,7 +2161,7 @@ header.top {
 }
 
 /* Gallery link */
-.vessel_gallery_link {
+.item_gallery_link {
     text-decoration: none;
     color: inherit;
     display: block;
@@ -2169,7 +2169,7 @@ header.top {
 }
 
 /* Gallery figure */
-.vessel_gallery_figure {
+.item_gallery_figure {
     margin: 0;
     padding: 0;
     display: flex;
@@ -2178,7 +2178,7 @@ header.top {
 }
 
 /* Gallery image container */
-.vessel_gallery_image {
+.item_gallery_image {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
@@ -2186,7 +2186,7 @@ header.top {
     background: linear-gradient(135deg, rgba(182, 98, 38, 0.2), rgba(174, 167, 77, 0.2));
 }
 
-.vessel_gallery_image img {
+.item_gallery_image img {
     position: absolute;
     top: 0;
     left: 0;
@@ -2197,7 +2197,7 @@ header.top {
     display: block;
 }
 
-.vessel_gallery_overlay {
+.item_gallery_overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -2208,16 +2208,16 @@ header.top {
     pointer-events: none;
 }
 
-.vessel_gallery_card:hover .vessel_gallery_image img {
+.item_gallery_card:hover .item_gallery_image img {
     transform: scale(1.12) rotate(2deg);
 }
 
-.vessel_gallery_card:hover .vessel_gallery_overlay {
+.item_gallery_card:hover .item_gallery_overlay {
     background: rgba(0, 0, 0, 0.1);
 }
 
 /* Gallery caption */
-.vessel_gallery_caption {
+.item_gallery_caption {
     padding: 1.5rem;
     background: linear-gradient(135deg, rgba(182, 98, 38, 0.1), rgba(174, 167, 77, 0.1));
     color: #AEA74D;
@@ -2233,19 +2233,19 @@ header.top {
     line-height: 1.4;
 }
 
-.vessel_gallery_card:hover .vessel_gallery_caption {
+.item_gallery_card:hover .item_gallery_caption {
     color: #c9c560;
     background: linear-gradient(135deg, rgba(182, 98, 38, 0.2), rgba(174, 167, 77, 0.2));
 }
 
-/* Vessels CTA section */
-.vessels_cta_section {
+/* Items CTA section */
+.items_cta_section {
     padding: 4rem 2rem;
     text-align: center;
     background: linear-gradient(135deg, rgba(42, 73, 101, 0.4) 0%, rgba(182, 98, 38, 0.1) 100%);
 }
 
-.vessels_cta_content {
+.items_cta_content {
     max-width: 700px;
     margin: 0 auto;
     background: rgba(42, 73, 101, 0.3);
@@ -2255,7 +2255,7 @@ header.top {
     backdrop-filter: blur(10px);
 }
 
-.vessels_cta_title {
+.items_cta_title {
     font-size: 2.2rem;
     color: #AEA74D;
     margin: 0 0 1rem 0;
@@ -2263,7 +2263,7 @@ header.top {
     letter-spacing: 0.5px;
 }
 
-.vessels_cta_text {
+.items_cta_text {
     font-size: 1.1rem;
     color: #c7784d;
     margin: 0 0 2rem 0;
@@ -2271,7 +2271,7 @@ header.top {
     opacity: 0.95;
 }
 
-.vessels_cta_button {
+.items_cta_button {
     display: inline-block;
     padding: 1rem 2.5rem;
     background: linear-gradient(135deg, #AEA74D 0%, #c9c560 100%);
@@ -2285,7 +2285,7 @@ header.top {
     letter-spacing: 0.5px;
 }
 
-.vessels_cta_button:hover {
+.items_cta_button:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(174, 167, 77, 0.4);
     background: linear-gradient(135deg, #c9c560 0%, #AEA74D 100%);
@@ -2293,134 +2293,134 @@ header.top {
 
 /* Responsive design */
 @media (max-width: 1024px) {
-    .vessels_title {
+    .items_title {
         font-size: 3rem;
     }
 
-    .vessels_subtitle {
+    .items_subtitle {
         font-size: 1.1rem;
     }
 
-    .vessels_gallery {
+    .items_gallery {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1.5rem;
     }
 
-    .vessels_cta_title {
+    .items_cta_title {
         font-size: 1.9rem;
     }
 }
 
 @media (max-width: 768px) {
-    .vessels_page_main {
+    .items_page_main {
         padding-bottom: 2rem;
     }
 
-    .vessels_header {
+    .items_header {
         padding: 3rem 1.5rem 2rem 1.5rem;
     }
 
-    .vessels_title {
+    .items_title {
         font-size: 2.5rem;
     }
 
-    .vessels_subtitle {
+    .items_subtitle {
         font-size: 1rem;
     }
 
-    .vessels_gallery_container {
+    .items_gallery_container {
         padding: 0 1rem;
         margin-bottom: 3rem;
     }
 
-    .vessels_gallery {
+    .items_gallery {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: 1.5rem;
     }
 
-    .vessel_gallery_card {
+    .item_gallery_card {
         border-radius: 12px;
     }
 
-    .vessel_gallery_caption {
+    .item_gallery_caption {
         padding: 1rem;
         font-size: 1rem;
     }
 
-    .vessels_cta_section {
+    .items_cta_section {
         padding: 3rem 1rem;
     }
 
-    .vessels_cta_content {
+    .items_cta_content {
         padding: 2rem;
     }
 
-    .vessels_cta_title {
+    .items_cta_title {
         font-size: 1.6rem;
     }
 
-    .vessels_cta_text {
+    .items_cta_text {
         font-size: 1rem;
     }
 
-    .vessels_cta_button {
+    .item_cta_button {
         padding: 0.9rem 2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .vessels_header {
+    .items_header {
         padding: 2rem 1rem 1.5rem 1rem;
     }
 
-    .vessels_title {
+    .items_title {
         font-size: 1.8rem;
         margin-bottom: 0.75rem;
     }
 
-    .vessels_subtitle {
+    .items_subtitle {
         font-size: 0.95rem;
         line-height: 1.5;
     }
 
-    .vessels_gallery_container {
+    .items_gallery_container {
         padding: 0 1rem;
         margin-bottom: 2rem;
     }
 
-    .vessels_gallery {
+    .items_gallery {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 1rem;
     }
 
-    .vessel_gallery_card {
+    .item_gallery_card {
         border-radius: 10px;
     }
 
-    .vessel_gallery_caption {
+    .item_gallery_caption {
         padding: 0.75rem;
         font-size: 0.9rem;
     }
 
-    .vessels_cta_section {
+    .items_cta_section {
         padding: 2rem 1rem;
     }
 
-    .vessels_cta_content {
+    .items_cta_content {
         padding: 1.5rem;
     }
 
-    .vessels_cta_title {
+    .items_cta_title {
         font-size: 1.4rem;
         margin-bottom: 0.75rem;
     }
 
-    .vessels_cta_text {
+    .items_cta_text {
         font-size: 0.95rem;
         margin-bottom: 1.5rem;
     }
 
-    .vessels_cta_button {
+    .item_cta_button {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
         display: block;

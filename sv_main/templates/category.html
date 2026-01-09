@@ -13,7 +13,7 @@
         <p class="top_text">Все сосуды с секретом.ком</p>
         <nav class="navigation_panel">
             <a class="abutton" href="{% url 'main_page' %}">Главная</a>
-            <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+            <a class="abutton" href="{% url 'items_page' %}">Все Сосуды</a>
             <a class="abutton" href="{% url 'poll_start' %}">Опросик</a>
             <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
         </nav>
@@ -32,20 +32,20 @@
             </div>
         </section>
 
-        <section class="vessels_section">
-            <h2 class="vessels_section_title">Сосуды в этой категории</h2>
-            <div class="vessels_grid">
-                {% for vess in vess_for %}
-                <article class="vessel_card">
-                    <a href="{% url 'single_vessel_page' vessel_id=vess.id %}" class="vessel_link">
-                        <div class="vessel_image_wrapper">
-                            <img src="{% if vess.image %}{{ vess.image.url }}{% else %}{{ DEFAULT_VESSEL_IMAGE }}{% endif %}" 
-                                 alt="{{ vess.name }}"
+        <section class="items_section">
+            <h2 class="items_section_title">Сосуды в этой категории</h2>
+            <div class="items_grid">
+                {% for item in items_for %}
+                <article class="item_card">
+                    <a href="{% url 'single_item_page' item_id=item.id %}" class="item_link">
+                        <div class="item_image_wrapper">
+                            <img src="{% if item.image %}{{ item.image.url }}{% else %}{{ DEFAULT_ITEM_IMAGE }}{% endif %}" 
+                                 alt="{{ item.name }}"
                                  loading="lazy">
-                            <div class="vessel_overlay"></div>
+                            <div class="item_overlay"></div>
                         </div>
-                        <div class="vessel_content">
-                            <h3 class="vessel_name">{{ vess.name|truncatechars:25 }}</h3>
+                        <div class="item_content">
+                            <h3 class="item_name">{{ item.name|truncatechars:25 }}</h3>
                         </div>
                     </a>
                 </article>
