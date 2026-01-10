@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Tiny Cup",
+		"description": "A tiny cup for espresso.",
+		"category": "Small Vessels",
+		"image": "tiny_cup.png"
+	},
+	{
+		"name": "Festival Bowl",
+		"description": "A large bowl for gatherings.",
+		"category": "Large Vessels",
+		"image": "festival_bowl.jpg"
+	}
+]

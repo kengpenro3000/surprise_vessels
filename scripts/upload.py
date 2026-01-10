@@ -77,6 +77,7 @@ if categories_json_path:
                 continue
             else:
                 sys.exit(1)
+            
         cat = Category(
             name=name,
             description=item.get('description', ''),

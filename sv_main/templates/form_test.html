@@ -10,15 +10,15 @@
     {% csrf_token %}
         <label>
             да
-            <input type="radio" name="test" value="да" {% if values == "да" %} checked {% endif %}>
+            <input type="radio" name="test_no" value="да" >
 
             нет
-            <input type="radio" name="test" value="нет" {% if values == "нет" %} checked {% endif %}>
+            <input type="radio" name="test_yes" value="нет" >
         </label>
         <button type="submit">субмит</button>
     </form>
     {% if values %}
-        <p>вы выбрали: {{ values }}</p>
+        <p>вы выбрали: {{ values }}, {{keys}}</p>
     {% endif %}
 </body>
 </html>

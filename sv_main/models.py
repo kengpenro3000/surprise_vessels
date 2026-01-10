@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Category(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="vessels_cats/", blank=True)
@@ -8,8 +9,6 @@ class Category(models.Model):
     parameters = models.JSONField(default={"a": 0, "b": 0, "c": 0})
     rating = models.IntegerField(default=0)
 
-    class Meta:
-        db_table = 'sv_main_vesselcategory'
 
     def __str__(self):
         return self.name
@@ -42,20 +41,12 @@ class Results(models.Model):
     final_answer = models.JSONField(default={"a": 0, "b": 0, "c": 0})
     final_cat = models.ForeignKey(
         Category, on_delete=models.CASCADE, default=None, null=True)
+    
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     if not self.results:
-    #         results = {"a" : 0, "b" : 0, "c" : 0}
-
-    def increment_for_one(self, a):
-        self.results[a] += 1
-        self.save()
-
-    def increment(self, a, x):
-        rslt = self.results
-        rslt[a] += x
-        self.update(results=rslt)
+    # def rating(self, category_name):
+    #     category = Category.objects.get(name=category_name)
+    #     return Results.objects.filter(final_cat=category).count()
+    
 
     def calculate_nearest_cat(self, results):
         cats = []
@@ -76,13 +67,13 @@ class Results(models.Model):
         cats[min_cat_id][0].save()
         print(cats[min_cat_id][0].rating)
         self.final_cat = cats[min_cat_id][0]
-        # найти радиус-векторы до всех категорий
-        # вынуть все поля с параметрами категорий
-        # форчиком пройтись по ним, посохранять пары [(категория, радиус-вектор)] (просто список с кортежами)
-        # найти наименьший
 
-        # вкусно:
-        # min(a, key = lambda elem: elem[1])
-        # напиши невкусно
 
-        # self.final_cat =   заглушка
+def calculate_cat_rating(category_name=None, category=None, category_id=None):
+    if category_name:
+        category = Category.objects.get(name=category_name)
+    elif category_id:
+        category = Category.objects.get(id=category_id)
+    elif category:
+        pass
+    return Results.objects.filter(final_cat=category).count()

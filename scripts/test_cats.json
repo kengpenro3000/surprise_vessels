@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Small Vessels",
+		"description": "Compact vessels for everyday use.",
+		"parameters": {"a": 1, "b": 2, "c": 3},
+		"rating": 5,
+		"image": "small_vessel.png"
+	},
+	{
+		"name": "Large Vessels",
+		"description": "Big vessels for events and serving.",
+		"parameters": {"a": 10, "b": 20, "c": 30},
+		"rating": 4,
+		"image": "large_vessel.jpg"
+	}
+]

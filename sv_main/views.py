@@ -31,13 +31,15 @@ def poll(request):
 
 def poll_results(request):
     results = Results.objects.create()
-    cont = 0
+    # cont = 0
     answer_parameters = {"a": 0,"b": 0,"c": 0}
 
     if request.method == "POST":
         for key, value in request.POST.items():
-            if cont == 0:
-                cont += 1 
+            # if cont == 0:
+            #     cont += 1 
+                # continue
+            if key == "csrfmiddlewaretoken": 
                 continue
             print(value)
             answer_parameters["a"] += int(value.split()[0])
@@ -56,19 +58,19 @@ def poll_results(request):
     return render(request, "poll_results.html", context) 
 
  
-def form_test_res(request):
-    context = {}
-    if request.method == "POST":
-         for key, value in request.POST.items():
-            request.session["post_key"] = key
-            request.session["post_value"] = value
-    return redirect("form_test_page")
+# def form_test_res(request):
+#     context = {}
+#     if request.method == "POST":
+#          for key, value in request.POST.items():
+#             request.session["post_key"] = key
+#             request.session["post_value"] = value
+#     return redirect("form_test_page")
 
 
-def form_test(request):
-    keys = request.session.get("post_key", None)
-    values = request.session.get("post_value", None)
-    return render(request, "form_test.html", {"keys": keys, "values": values})
+# def form_test(request):
+#     keys = request.session.get("post_key", None)
+#     values = request.session.get("post_value", None)
+#     return render(request, "form_test.html", {"keys": keys, "values": values})
 
 
 def items(request):
@@ -113,6 +115,4 @@ def single_category(request, category_id):
     }))
 
 
-# def vessel_for_category(request, category_id):
-#     vess_for = Vessel.objects.get(category = category_id)
-#     return render(request, "category.html", {"vess_for"})
+

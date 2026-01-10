@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import *
+# from .models.results import Results
+# from .models.results import Results
 
 
 admin.site.register(Category)

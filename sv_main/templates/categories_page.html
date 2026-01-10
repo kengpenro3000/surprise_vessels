@@ -36,7 +36,7 @@
                     </div>
                     <div class="category_content">
                         <h2 class="category_title">{{ cat.name }}</h2>
-                        <p class="category_description">{{ cat.description }}</p>
+                        <p class="category_description">{{ cat.description|truncatechars:140 }}</p>
                     </div>
                 </a>
             </article>
