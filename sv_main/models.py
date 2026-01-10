@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from settings.USR_PSETTINGS import DEFAULT_PARAMS
 
 
 
@@ -6,13 +8,23 @@ class Category(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="vessels_cats/", blank=True)
     description = models.TextField()
-    parameters = models.JSONField(default={"a": 0, "b": 0, "c": 0})
+    parameters = models.JSONField(default=DEFAULT_PARAMS)
     rating = models.IntegerField(default=0)
 
 
     def __str__(self):
         return self.name
 
+    def set_params(self, upload_param_dict):
+
+        # у тебя есть словарь из загрузочного json
+        # есть дефолтный словарь DEFAULT_PARAMS
+        # проходишься циклом по загрузочному словарю, переставляешь значения поверх текущего поля parameters
+        # если в загрузочном json написано то, чего нет в дефолте - орать
+
+        #new_params = ~json(self.parameters) ## тут нужна библиотека json, чтобы params расчехлить
+        #цикл, for key in upload_param_dict: if key in DEFAULT_PARAMS: new_params[key] = upload_param_dict[key]
+        #self.parameters = new_params
 
 class Item(models.Model):
     name = models.CharField(max_length=50)

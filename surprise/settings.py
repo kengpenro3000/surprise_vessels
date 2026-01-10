@@ -123,6 +123,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+USR_SETTINGS = os.path.join(BASE_DIR, "usr_settings.py")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
