@@ -11,7 +11,5 @@ urlpatterns = [
     path("categories/", views.categories, name="categories_page"),
     path("vessels/<int:vessel_id>/", views.single_vessel, name="single_vessel_page"),
     path("categories/<int:category_id>", views.single_category, name="single_category_page"),
-    path("form_test/", views.form_test, name="form_test_page"),
-    path("form_test_res/", views.form_test_res, name="form_test_res_page"),
-
+    path("stat-page/", views.stat_page,name="stat_page_page")
 ]

@@ -1,15 +1,24 @@
 from django.db import models
+from .constants import DEFAULT_PARAMETERS
 
 
 class VesselCategory(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="vessels_cats/", blank=True)
     description = models.TextField()
-    parameters = models.JSONField(default={"a": 0, "b": 0, "c": 0})
+    parameters = models.JSONField(default = DEFAULT_PARAMETERS)
+    # parameters = models.JSONField(default={"a": 0, "b": 0, "c": 0})
     # rating = models.IntegerField(default=0)
+
+    def calculate_cat_rating(self):
+        return Results.objects.filter(final_cat=self).count()
 
     def __str__(self):
         return self.name
+    
+
+
+    
 
 
 class Vessel(models.Model):
@@ -35,7 +44,7 @@ class Answer(models.Model):
 
 
 class Results(models.Model):
-    final_answer = models.JSONField(default={"a": 0, "b": 0, "c": 0})
+    final_answer = models.JSONField(default=DEFAULT_PARAMETERS)
     final_cat = models.ForeignKey(
         VesselCategory, on_delete=models.CASCADE, default=None, null=True)
 
@@ -44,9 +53,11 @@ class Results(models.Model):
         min = float("inf")
         min_cat_id = None
         for cat in VesselCategory.objects.all():
-            rad_vector = ((results["a"] - cat.parameters["a"])**2 + (results["b"] -
-                          cat.parameters["b"])**2 + (results["c"] - cat.parameters["c"])**2)**(1/2)
+            for key in results.keys():
+                rad_vector = (results[key] - cat.parameters[key])**2 
+            rad_vector = rad_vector**(1/2)
             cats.append((cat, rad_vector))
+            
         print(cats, "|" , results["a"], results["b"], results["c"])
         i = 0
         for par in cats:
@@ -54,18 +65,7 @@ class Results(models.Model):
                 min = par[1]
                 min_cat_id = i
             i += 1
-        cats[min_cat_id][0].rating += 1
-        cats[min_cat_id][0].save()
-        print(cats[min_cat_id][0].rating)
         self.final_cat = cats[min_cat_id][0]
 
-
-def calculate_cat_rating(self=None, cat_id = None, cat_name = None, cat = None):
-    if cat_id:
-        return len(Results.objects.filter(final_cat = VesselCategory.objects.get(id=cat_id)))
-    elif cat_name:
-        return len(Results.objects.filter(final_cat = VesselCategory.objects.get(name=cat_name)))
-    elif cat:
-        return len(Results.objects.filter(final_cat = cat))
 
 
