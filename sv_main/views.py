@@ -19,31 +19,61 @@ def mainpage(request):
 
 
 def start_poll(request):
-    return render(request, "poll_start.html")
+
+    #if request.session.queue:
+        #отрисовать обе кнопки
+
+    #кнопка начать тест
+
+        #создается очередь в сешшнс request.session.queue = list(Question.objects.all()) (можно перемешать)
+        #создается словарь со временными результатами
+        #переход на poll
+
+    #кнопка продолжить тест
+        #переход на poll
+
+
+
+    #return render(request, "poll_start.html")
 
 
 def poll(request):
-    questions = Question.objects.all()
 
-    context = {
-        "questions": questions,
-    }
-    return render(request, "poll_page.html", context)
+    #ловим из сешшнс очередь
+    #если остался последний вопрос, рисуем кнопку закончить тест вместо продолжить
+
+    #берем первый вопрос, рисуем форму со всеми его ответами (можно перемешать)
+    #убираем из очереди
+
+    #ловим значение ответа из формы, прибавляем его попунктно в temp_result
+    # 
+    # вызываем опять poll по кнопке продолжить (на тот же урл перейти)
+    # по кнопке закончить тест в poll_results  
+
+
+    # questions = Question.objects.all()
+
+    # context = {
+    #     "questions": questions,
+    # }
+    # return render(request, "poll_page.html", context)
 
 
 def poll_results(request):
     results = Results.objects.create()
-    cont = 0
-    answer_parameters = DEFAULT_PARAMETERS
 
-    if request.method == "POST":
-        for key, value in request.POST.items():
-            if cont == 0:
-                cont += 1 
-                continue
-            print(value)
-            for key in value.keys():
-                answer_parameters[key] += value.key
+    # cont = 0
+    # answer_parameters = DEFAULT_PARAMETERS (это session.temp_results)
+
+    #это унести в poll
+    #if request.method == "POST":
+        # for key, value in request.POST.items():
+        #     if cont == 0:
+        #         cont += 1 
+        #         continue
+        #     print(value)
+        #     for key in value.keys():
+        #         answer_parameters[key] += value.key
 
             # answer_parameters["a"] += value.a
             # answer_parameters["b"] += value.b
