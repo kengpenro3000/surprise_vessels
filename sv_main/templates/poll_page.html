@@ -33,7 +33,7 @@
                 <p class="progress_text" id="progress-text">Вопрос 1 из {{ questions|length }}</p>
             </section>
 
-            <form action="{% url 'poll_results_page' %}" method="post" id="poll-form">
+            <form action="{% url 'poll_results_pagexi' %}" method="post" id="poll-form">
                 {% csrf_token %}
                 <section class="poll_content" id="poll-content">
                     {% for q in questions %}
@@ -47,8 +47,7 @@
                                     id="answer_{{ ans.id }}_q{{ q.id }}" 
                                     name="question_{{ q.id }}" 
                                     value="{{ ans.weigth }}"
-                                    class="radio-select-input"
-                                >
+                                    class="radio-select-input">
                                 <label 
                                     for="answer_{{ ans.id }}_q{{ q.id }}" 
                                     class="radio-select-label answer_button"
@@ -75,7 +74,7 @@
         <hr>
         <small>Made by KengPenro (this part)</small>
     </footer>
-    <script>
+    <!-- <script>
         let currentQuestion = 1;
         const totalQuestions = {{ questions|length }};
         const questions = document.querySelectorAll('.question_container');
@@ -121,6 +120,6 @@
 
         // Initial
         showQuestion(currentQuestion);
-    </script>
+    </script> -->
 </body>
 </html>
