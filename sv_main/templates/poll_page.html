@@ -33,7 +33,7 @@
                 <p class="progress_text" id="progress-text">Вопрос 1 из {{ questions|length }}</p>
             </section>
 
-            <form action="{% url 'poll_results_pagexi' %}" method="post" id="poll-form">
+            <form action="{% url 'poll_results_page' %}" method="post" id="poll-form">
                 {% csrf_token %}
                 <section class="poll_content" id="poll-content">
                     {% for q in questions %}

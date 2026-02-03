@@ -10,10 +10,13 @@ import json
 import ast
 
 def mainpage(request):
-
+    vessel = random.choice(Vessel.objects.all())
+    vessel_id = vessel.id
+    print(vessel_id)
     return render(request, 'main_page.html', {
         'DEFAULT_VESSEL_IMAGE': DEFAULT_VESSEL_IMAGE,
         'DEFAULT_CATEGORY_IMAGE': DEFAULT_CATEGORY_IMAGE,
+        'vessel' : vessel
 
     })
 
@@ -32,6 +35,7 @@ def start_poll(request):
             questions = []
             for x in Question.objects.all():
                 questions.append(x.id)
+                print(questions)
             random.shuffle(questions)
             request.session["queue"] = questions
             request.session["temp_results"] = DEFAULT_PARAMETERS
@@ -56,9 +60,9 @@ def poll(request):
     #ловим из сешшнс очередь
     #если остался последний вопрос, рисуем кнопку закончить тест вместо продолжить
 
-    question = request.session["queue"][0]
-    answers = list(Answer.objects.filter(question = question))
-    random.shuffle(list(Answer.objects.filter(question = question)))
+    question_id = request.session["queue"][0]
+    answers = list(Answer.objects.filter(question = Question.objects.get(pk = question_id)))
+    random.shuffle(answers)
 
     request.session["queue"].pop(0)
 
@@ -76,8 +80,8 @@ def poll(request):
             for key in dict_value.keys():
                 request.session["temp_results"][key] += dict_value[key]
         
-    return(request, "poll_page.html", {
-        "question" : question,
+    return  render(request, "poll_page.html", {
+        "question" : Question.objects.get(pk = question_id),
         "answer" : answers
     })
 
@@ -85,12 +89,12 @@ def poll(request):
     # по кнопке закончить тест в poll_results  
 
 
-    questions = Question.objects.all()
+    # questions = Question.objects.all()
 
-    context = {
-        "questions": questions,
-    }
-    return render(request, "poll_page.html", context)
+    # context = {
+    #     "questions": questions,
+    # }
+    # return render(request, "poll_page.html", context)
 
 
 def poll_results(request):

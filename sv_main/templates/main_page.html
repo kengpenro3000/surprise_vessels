@@ -1,6 +1,79 @@
 {% load static %}
 
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Example</title>
+    <!-- Подключение внешнего файла стилей -->
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now 'U' %}">
+</head>
+<body>
+    <!-- ОБЩИЙ КОНТЕЙНЕР ДЛЯ ВСЕГО СОДЕРЖИМОГО (КРОМЕ ФУТЕРА) -->
+    <div class="page-wrapper">
+        <!-- Основной контейнер хедера -->
+        <header class="site-header">
+            <!-- Левая иконка (Иконка Б) -->
+             
+            <div class="icon icon-b">
+                <!-- Изображение для Иконки Б -->
+                <img src="images/icon-b.png" alt="Иконка Б">
+            </div>
+
+            <!-- Правая иконка (Иконка А) -->
+            <div class="icon icon-a">
+                <!-- Изображение для Иконки А -->
+                <img src="images/icon-a.png" alt="Иконка А">
+            </div>
+        </header>
+
+        <!-- Блок для текста -->
+        <div class="content-box">
+            <p>Ваш текст здесь с оченьдлиннымсловомкотороебудетпереноситьсясдефисом...</p>
+        </div>
+
+        <!-- Контейнер для трёх квадратных блоков -->
+        <div class="icons-container">
+            <!-- Блок с иконкой C -->
+                <a class="abutton" href="{% url 'poll_start' %}">
+            <div class="square-block block-c">
+                <img src="images/icon-c.png" alt="Иконка C">
+            </div>
+                Все Сосуды</a>
+
+            <!-- Блок с иконкой D -->
+                <a class="abutton" href="{% url 'categories_page' %}">
+            <div class="square-block block-d">
+                <img src="images/icon-d.png" alt="Иконка D">
+            </div>
+                Категории</a>
+
+            <!-- Блок с иконкой E -->
+             <a class="abutton" href="{% url 'single_vessel_page' vessel_id=vessel.id %}">
+            <div class="square-block block-e">
+                <img src="{% if vessel.image %}{{ vessel.image.url }}{% else %}{{ DEFAULT_VESSEL_IMAGE }}{% endif %}" alt="Иконка E">
+
+            </div>
+            Сосудо</a>
+        </div>
+    </div>
+
+    <!-- ФУТЕР (ВСЕГДА В НИЗУ СТРАНИЦЫ) -->
+    <footer class="site-footer">
+        <!-- Паттерн повторяется автоматически через фон -->
+    </footer>
+</body>
+<!-- </html> -->
+
+
+
+
+
+
+<!-- {% load static %}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -49,4 +122,4 @@
     </footer>
 </body>
 </html>
-
+ -->
