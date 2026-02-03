@@ -42,14 +42,7 @@ def start_poll(request):
 def poll(request):
 
 
-    question_id = request.session["queue"][0]
-    questions = len(Question.objects.all())
-    print(question_id, "|", questions)
-    answers = list(Answer.objects.filter(question = Question.objects.get(pk = question_id)))
-    random.shuffle(answers)
 
-    request.session["queue"].pop(0)
-    print(request.session["queue"])
 
     # if request.method == "POST":
     #     for key, value in request.POST.items():
@@ -67,23 +60,35 @@ def poll(request):
     # })
 
     if request.method == "POST":
-        
-        
+
         if request.POST.get("poll_button") == "go":
            
                 return redirect('/poll/')
         elif request.POST.get("poll_button") == "end":
           return redirect('poll_results')  
         
-    for key, value in request.POST.items():
-            if key == 'csrfmiddlewaretoken':
-                continue
-            print(value)
-            dict_value = ast.literal_eval(value)
-            for key in dict_value.keys():
-                request.session["temp_results"][key] += dict_value[key]
-        
-        
+        for key, value in request.POST.items():
+                if key == 'csrfmiddlewaretoken':
+                    continue
+                print(value)
+                dict_value = ast.literal_eval(value)
+                for key in dict_value.keys():
+                    request.session["temp_results"][key] += dict_value[key]
+    else:
+        if len(request.session["queue"]) == 0:
+            return redirect('poll_results_page')
+        question_id = request.session["queue"][0]
+        questions = len(Question.objects.all())
+        print(question_id, "|", questions)
+        answers = list(Answer.objects.filter(question = Question.objects.get(pk = question_id)))
+        random.shuffle(answers)
+
+        temp_queue = request.session["queue"]
+        print(temp_queue.pop(0))
+        request.session["queue"] = temp_queue
+
+        print(request.session["queue"])
+
 
     return  render(request, "poll_page.html", {
         "question" : Question.objects.get(pk = question_id),
