@@ -24,11 +24,6 @@ def mainpage(request):
 
 
 def start_poll(request):
-
-    #if request.session.queue:
-        #отрисовать обе кнопки
-
-    #кнопка начать тест
     if  request.method == "POST":
         if request.POST.get("start_poll_button") == "start":
             print("yes it works")    
@@ -43,22 +38,9 @@ def start_poll(request):
             return redirect('poll_page') 
     return  render(request, "poll_start.html")
 
-        #создается очередь в сешшнс request.session.queue = list(Question.objects.all()) (можно перемешать)
-        #создается словарь со временными результатами
-        #переход на poll
-
-    #кнопка продолжить тест
-        #переход на poll
-
-
-
-    # return render(request, "poll_start.html")
-
 
 def poll(request):
 
-    #ловим из сешшнс очередь
-    #если остался последний вопрос, рисуем кнопку закончить тест вместо продолжить
 
     question_id = request.session["queue"][0]
     questions = len(Question.objects.all())
@@ -67,14 +49,33 @@ def poll(request):
     random.shuffle(answers)
 
     request.session["queue"].pop(0)
+    print(request.session["queue"])
 
-    #берем первый вопрос, рисуем форму со всеми его ответами (можно перемешать)
-    #убираем из очереди
-
-    #ловим значение ответа из формы, прибавляем его попунктно в temp_result
+    # if request.method == "POST":
+    #     for key, value in request.POST.items():
+            # if key == 'csrfmiddlewaretoken':
+            #     continue
+            # print(value)
+            # dict_value = ast.literal_eval(value)
+            # for key in dict_value.keys():
+            #     request.session["temp_results"][key] += dict_value[key]
+        
+    # return  render(request, "poll_page.html", {
+    #     "question" : Question.objects.get(pk = question_id),
+    #     "answer" : answers,
+    #     "questions" : questions
+    # })
 
     if request.method == "POST":
-        for key, value in request.POST.items():
+        
+        
+        if request.POST.get("poll_button") == "go":
+           
+                return redirect('/poll/')
+        elif request.POST.get("poll_button") == "end":
+          return redirect('poll_results')  
+        
+    for key, value in request.POST.items():
             if key == 'csrfmiddlewaretoken':
                 continue
             print(value)
@@ -82,22 +83,13 @@ def poll(request):
             for key in dict_value.keys():
                 request.session["temp_results"][key] += dict_value[key]
         
+        
+
     return  render(request, "poll_page.html", {
         "question" : Question.objects.get(pk = question_id),
         "answer" : answers,
         "questions" : questions
     })
-
-    # вызываем опять poll по кнопке продолжить (на тот же урл перейти)
-    # по кнопке закончить тест в poll_results  
-
-
-    # questions = Question.objects.all()
-
-    # context = {
-    #     "questions": questions,
-    # }
-    # return render(request, "poll_page.html", context)
 
 
 def poll_results(request):
@@ -105,19 +97,6 @@ def poll_results(request):
 
     answer_parameters = DEFAULT_PARAMETERS #(это session.temp_results)
 
-    #это унести в poll
-    # if request.method == "POST":
-    #     for key, value in request.POST.items():
-    #         if key == 'csrfmiddlewaretoken':
-    #             continue
-    #         print(value)
-    #         dict_value = ast.literal_eval(value)
-    #         for key in dict_value.keys():
-    #             answer_parameters[key] += dict_value[key]
-
-            # answer_parameters["a"] += value.a
-            # answer_parameters["b"] += value.b
-            # answer_parameters["c"] += value.c
 
     results.calculate_nearest_cat(answer_parameters)
 

@@ -33,15 +33,15 @@
                 <p class="progress_text" id="progress-text">Вопрос 1 из {{ questions }}</p>
             </section>
 
-            <form action="{% url 'poll_results_page' %}" method="post" id="poll-form">
+            <form action="{% url 'poll_page' %}" method="post" id="poll-form">
                 {% csrf_token %}
                 <section class="poll_content" id="poll-content">
                 
-                    <div class="question_container" data-question="{{ forloop.counter }}" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
-                        <h2 class="question_text">{{ question.question_text }}</h2>
-                        <div class="answers_grid">
+                    
+                        <h2 >{{ question.question_text }}</h2>
+                        <div >
                             {% for ans in question.answer_set.all %}
-                            <div class="radio-select-option">
+                            <div >
                                 <input 
                                     type="radio" 
                                     id="answer_{{ ans.id }}_q{{ q.id }}" 
@@ -52,21 +52,43 @@
                                     for="answer_{{ ans.id }}_q{{ q.id }}" 
                                     class="radio-select-label answer_button"
                                 >
-                                    <span class="radio-select-text answer_text">{{ ans.answer_text }}</span>
+                                    <span >{{ ans.answer_text }}</span>
                                 </label>
                             </div>
-                   {% endfor %}
+
+
+                            {% endfor %}
                         </div>
-                    </div>
+                        <button
+                        type="submit"
+                        name="poll_button"
+                        value="go">
+                        Следующий вопрос
+                        </button>
+                        {% comment %} <a href="{%  %}"></a> {% endcomment %}
                   
                 </section>
 
-                <section class="poll_actions">
-                    <button type="button" class="poll_button secondary" id="prev-btn" disabled>Предыдущий</button>
-                    <button type="button" class="poll_button primary" id="next-btn">Следующий</button>
-                    <button type="submit" class="poll_button primary" id="submit-btn" style="display: none;">Отправить</button>
-                </section>
+  
             </form>
+
+                {% comment %} <div>
+                    <form action="{% url 'poll_page' %}" method="post">
+                                {% csrf_token %} 
+                                    
+                                        <button
+                                        type="submit"
+                                        name="poll_button"
+                                        value="go">
+                                        Следующий вопрос
+                                        </button>
+                                    
+                                    
+
+                                    
+                    </form>
+                </div> {% endcomment %}
+
         </div>
     </main>
     
