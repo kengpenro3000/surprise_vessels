@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты теста - Все сосуды с секретом</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now 'U' %}">
+</head>
+<body>
+    <header class="top">
+        <p class="top_text">Все сосуды с секретом.ком</p>
+        <nav class="navigation_panel">
+            <a class="abutton" href="{% url 'main_page' %}">Главная</a>
+            <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+            <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
+        </nav>
+    </header>
+
+    <main class="vessel_main">
+        {% csrf_token %}
+        <div class="vessel_container">
+            <section class="vessel_hero">
+                <div class="vessel_hero_image">
+                    <img src="{% if final_cat.image %}{{ final_cat.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" alt="{{ final_cat.name }}">
+                </div>
+                <div class="vessel_hero_overlay"></div>
+                <div class="vessel_hero_content">
+                    <h1 class="vessel_hero_title">Ваш сосуд: {{ final_cat.name }}</h1>
+                    <p class="vessel_hero_subtitle">{{ final_cat.description }}</p>
+                </div>
+            </section>
+
+            <section class="vessel_info_section">
+                <h2 class="vessel_section_title">Ваши параметры</h2>
+                <div class="vessel_info_grid">
+                    <div class="vessel_info_card">
+                        <span class="info_icon">A</span>
+                        <h3 class="info_card_title">Параметр A</h3>
+                        <p class="info_card_text">{{ a }}</p>
+                    </div>
+                    <div class="vessel_info_card">
+                        <span class="info_icon">B</span>
+                        <h3 class="info_card_title">Параметр B</h3>
+                        <p class="info_card_text">{{ b }}</p>
+                    </div>
+                    <div class="vessel_info_card">
+                        <span class="info_icon">C</span>
+                        <h3 class="info_card_title">Параметр C</h3>
+                        <p class="info_card_text">{{ c }}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="vessel_cta_section">
+                <div class="vessel_cta_content">
+                    <h2 class="vessel_cta_title">Узнайте больше</h2>
+                    <p class="vessel_cta_text">Посмотрите другие сосуды или пройдите тест заново.</p>
+                    <div class="vessel_cta_buttons">
+                        <a href="{% url 'vessels_page' %}" class="vessel_cta_button primary">Все Сосуды</a>
+                        <a href="{% url 'poll_start' %}" class="vessel_cta_button secondary">Пройти заново</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <hr>
+        <small>Made by KengPenro (this part)</small>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все сосуды с секретом - Узнай, какой ты сосуд!</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now 'U' %}">
+</head>
+<body>
+    <header class="top">
+        <p class="top_text">Все сосуды с секретом.ком</p>
+        <nav class="navigation_panel">
+            <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+            <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
+        </nav>
+    </header>
+
+    <main class="main_page">
+        <section class="hero_section">
+            <div class="hero_content">
+                <h1 class="hero_title">Узнай, какой ты сосуд!</h1>
+                <p class="hero_subtitle">Пройди увлекательный тест и откройте для себя, какой древний сосуд отражает вашу личность</p>
+                <a href="{% url 'poll_start' %}" class="hero_button">Начать тест</a>
+            </div>
+            <div class="hero_decoration"></div>
+        </section>
+
+        <section class="featured_section">
+            <h2 class="section_title">Популярные категории</h2>
+            <div class="vessels_showcase">
+                {% for pop_cat in pop_catslist %}
+                <a href="{% url 'single_category_page' pop_cat.id %}" class="showcase_card">
+                    <figure class="showcase_figure">
+                        <img src="{% if pop_cat.image %}{{ pop_cat.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" alt="{{ pop_cat.name }}">
+                        <figcaption>{{ pop_cat.name }} ({{ pop_cat.rating }})</figcaption>
+                    </figure>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+      
+    </main>
+
+    <footer>
+        <hr>
+        <small>Made by KengPenro (this part)</small>
+    </footer>
+</body>
+</html>
+

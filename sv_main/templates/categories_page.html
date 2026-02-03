@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категории сосудов - Все сосуды с секретом</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now 'U' %}">
+</head>
+<body>
+    <header class="top">
+        <p class="top_text">Все сосуды с секретом.ком</p>
+        <nav class="navigation_panel">
+            <a class="abutton" href="{% url 'main_page' %}">Главная</a>
+            <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+            <a class="abutton" href="{% url 'poll_start' %}">Опросик</a>
+        </nav>
+    </header>
+
+    <main class="categories_main">
+        <section class="categories_header">
+            <h1>Категории Сосудов</h1>
+            <p class="categories_intro">Откройте для себя различные типы сосудов с уникальными свойствами и историей</p>
+        </section>
+
+        <div class="categories_container">
+            {% for cat in catlist %}
+            <article class="category_card">
+                <a href="{% url 'single_category_page' category_id=cat.id %}" class="category_link">
+                    <div class="category_image_wrapper">
+                        <img src="{% if cat.image %}{{ cat.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" 
+                             alt="{{ cat.name }}"
+                             loading="lazy">
+                        <div class="category_overlay"></div>
+                    </div>
+                    <div class="category_content">
+                        <h2 class="category_title">{{ cat.name }}</h2>
+                        <p class="category_description">{{ cat.description }}</p>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        <hr>
+        <small>Made by KengPenro (this part)</small>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }} - Все сосуды с секретом</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now 'U' %}">
+</head>
+<body>
+    <header class="top">
+        <p class="top_text">Все сосуды с секретом.ком</p>
+        <nav class="navigation_panel">
+            <a class="abutton" href="{% url 'main_page' %}">Главная</a>
+            <a class="abutton" href="{% url 'vessels_page' %}">Все Сосуды</a>
+            <a class="abutton" href="{% url 'poll_start' %}">Опросик</a>
+            <a class="abutton" href="{% url 'categories_page' %}">Категории</a>
+        </nav>
+    </header>
+
+    <main class="category_main">
+        <section class="category_detail_header">
+            <div class="category_detail_image">
+                <img src="{% if category.image %}{{ category.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" 
+                     alt="{{ category.name }}"
+                     loading="lazy">
+            </div>
+            <div class="category_detail_content">
+                <h1 class="category_detail_title">{{ category.name }}</h1>
+                <p class="category_detail_description">{{ category.description }}</p>
+            </div>
+        </section>
+
+        <section class="vessels_section">
+            <h2 class="vessels_section_title">Сосуды в этой категории</h2>
+            <div class="vessels_grid">
+                {% for vess in vess_for %}
+                <article class="vessel_card">
+                    <a href="{% url 'single_vessel_page' vessel_id=vess.id %}" class="vessel_link">
+                        <div class="vessel_image_wrapper">
+                            <img src="{% if vess.image %}{{ vess.image.url }}{% else %}{{ DEFAULT_VESSEL_IMAGE }}{% endif %}" 
+                                 alt="{{ vess.name }}"
+                                 loading="lazy">
+                            <div class="vessel_overlay"></div>
+                        </div>
+                        <div class="vessel_content">
+                            <h3 class="vessel_name">{{ vess.name|truncatechars:25 }}</h3>
+                        </div>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <small>Made by KengPenro (this part)</small>
+    </footer>
+</body>
+</html>
