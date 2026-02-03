@@ -61,6 +61,8 @@ def poll(request):
     #если остался последний вопрос, рисуем кнопку закончить тест вместо продолжить
 
     question_id = request.session["queue"][0]
+    questions = len(Question.objects.all())
+    print(question_id, "|", questions)
     answers = list(Answer.objects.filter(question = Question.objects.get(pk = question_id)))
     random.shuffle(answers)
 
@@ -82,7 +84,8 @@ def poll(request):
         
     return  render(request, "poll_page.html", {
         "question" : Question.objects.get(pk = question_id),
-        "answer" : answers
+        "answer" : answers,
+        "questions" : questions
     })
 
     # вызываем опять poll по кнопке продолжить (на тот же урл перейти)
