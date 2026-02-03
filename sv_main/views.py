@@ -76,21 +76,10 @@ def poll(request):
             for key in dict_value.keys():
                 request.session["temp_results"][key] += dict_value[key]
         
-    return(request, "poll_page.html", {
+    return render(request, "poll_page.html", {
         "question" : question,
         "answer" : answers
     })
-
-    # вызываем опять poll по кнопке продолжить (на тот же урл перейти)
-    # по кнопке закончить тест в poll_results  
-
-
-    questions = Question.objects.all()
-
-    context = {
-        "questions": questions,
-    }
-    return render(request, "poll_page.html", context)
 
 
 def poll_results(request):
