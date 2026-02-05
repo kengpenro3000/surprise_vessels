@@ -1,6 +1,63 @@
 {% load static %}
 
+
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блок с текстом</title>
+    <link rel="stylesheet" href="{% static 'start-poll.css' %}?{% now 'U' %}">
+</head>
+<body>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <!-- Левая иконка (Иконка Б) -->
+            <div class="icon icon-b">
+                <img src="images/icon-b.png" alt="Иконка Б">
+            </div>
+
+            <!-- Центральные иконки (3 штуки) -->
+            <div class="center-icons">
+                <div class="icon icon-c">
+                    <img src="images/icon-c.png" alt="Иконка C">
+                </div>
+                <div class="icon icon-d">
+                    <img src="images/icon-d.png" alt="Иконка D">
+                </div>
+                <div class="icon icon-e">
+                    <img src="images/icon-e.png" alt="Иконка E">
+                </div>
+            </div>
+
+            <!-- Правая иконка (Иконка А) -->
+            <div class="icon icon-a">
+                <img src="images/icon-a.png" alt="Иконка А">
+            </div>
+        </header>
+
+        <div class="text-container">
+            <div class="text-top">Верхний текст</div>
+            <div class="text-middle">Средний текст</div>
+            <p>Это текст внутри черного блока. Он начинается сразу после нижнего зеленого блока. Текст может быть длинным и будет автоматически переноситься на новую строку. Он не выходит за границы блока благодаря свойствам word-wrap и overflow.</p>
+        </div>
+
+        <form class="button-form">
+            <button type="button" class="button-image">
+                <img src="images/button-icon.png" alt="Кнопка" style="width: 100%; height: 100%; object-fit: contain;">
+            </button>
+        </form>
+    </div>
+
+    <footer class="site-footer"></footer>
+</body>
+</html>
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -112,4 +169,4 @@
         <small>Made by KengPenro (this part)</small>
     </footer>
 </body>
-</html>
+</html> {% endcomment %}

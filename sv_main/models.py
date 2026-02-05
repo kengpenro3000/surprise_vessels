@@ -38,7 +38,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     answer_text = models.CharField(max_length=200)
-    weigth = models.JSONField(default="0 0 0")
+    weigth = models.JSONField(default=DEFAULT_PARAMETERS)
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, default=None, null=True)
 
