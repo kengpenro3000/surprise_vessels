@@ -11,28 +11,40 @@
 </head>
 <body>
     <div class="page-wrapper">
-        <header class="site-header">
+<header class="site-header">
             <!-- Левая иконка (Иконка Б) -->
+            <a class="abutton" href="{% url 'main_page' %}">
             <div class="icon icon-b">
-                <img src="images/icon-b.png" alt="Иконка Б">
+               
+                <img src="/media/static/logo_bk.png" alt="Иконка Б">
             </div>
+            </a>
 
             <!-- Центральные иконки (3 штуки) -->
+             <a class="abutton" href="{% url 'poll_start' %}">
             <div class="center-icons">
                 <div class="icon icon-c">
-                    <img src="images/icon-c.png" alt="Иконка C">
+                    <img src="/media/static/p2_bk_alt.png" alt="Иконка C">
                 </div>
+            </a>
+
+                <a class="abutton" href="{% url 'categories_page' %}">
                 <div class="icon icon-d">
-                    <img src="images/icon-d.png" alt="Иконка D">
+                    <img src="/media/static/p1_bk_alt.png" alt="Иконка D">
                 </div>
+                </a>
+                
+                <a class="abutton" href="{% url 'single_vessel_page' vessel_id=vessel.id %}">
                 <div class="icon icon-e">
-                    <img src="images/icon-e.png" alt="Иконка E">
+                    <img src="/media/static/p3_bk_alt.png" alt="Иконка E">
                 </div>
+                </a>
+
             </div>
 
             <!-- Правая иконка (Иконка А) -->
-            <div class="icon icon-a">
-                <img src="images/icon-a.png" alt="Иконка А">
+            <div >
+                
             </div>
         </header>
 
@@ -42,14 +54,27 @@
             <p>Это текст внутри черного блока. Он начинается сразу после нижнего зеленого блока. Текст может быть длинным и будет автоматически переноситься на новую строку. Он не выходит за границы блока благодаря свойствам word-wrap и overflow.</p>
         </div>
 
-        <form class="button-form">
+        {% comment %} <form class="button-form">
             <button type="button" class="button-image">
                 <img src="images/button-icon.png" alt="Кнопка" style="width: 100%; height: 100%; object-fit: contain;">
-            </button>
-        </form>
-    </div>
+            </button> {% endcomment %}
+                <form action="{% url 'poll_start' %}" method="post" class="button-form">
+                                {% csrf_token %}
+                                    
+                                        <button
+                                        type="submit"
+                                        name="start_poll_button"
+                                        value="start"
+                                        class="button-image">
+                                            <img src="/media/static/starttestbutton.png" alt="Кнопка" style="width: 100%; height: 100%; object-fit: contain;">
+                                        </button>
+                                    
+                                
+                                    
+                </form>
+       
 
-    <footer class="site-footer"></footer>
+   
 </body>
 </html>
 
@@ -169,4 +194,5 @@
         <small>Made by KengPenro (this part)</small>
     </footer>
 </body>
-</html> {% endcomment %}
+</html> 
+{% endcomment %}

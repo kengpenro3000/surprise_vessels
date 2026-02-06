@@ -1,0 +1,249 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+           background: 
+                /* PNG overlay*/
+                
+                /* Gradient background */
+                /* linear-gradient(#ffffff 0% 2%, #99D9EA 30% 50%, #674046 98% 100%); */
+                linear-gradient(#EFE4B0 0% 2%, #99d9ea 30% 50%, #26032b 98% 100%);
+            background-repeat:  no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment:  fixed;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 200px;
+    margin: 10px;
+}
+
+.black-block {
+    flex: 1 0 70%;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 20px;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.green-block {
+    flex: 1 0 30%;
+    /* background-color: ; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.green-block img {
+    max-width: 250px;
+    max-height: 250px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Новые центрированные блоки */
+.center-container {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    margin: 10px auto;
+    gap: 20px;
+}
+
+.black-block-image {
+    /* flex: 1; */
+    /* background-color: black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.red-block-text {
+    /* flex: 1; */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.black-block-image img {
+    max-width: 500px;
+    max-height: 500px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Форма с кнопкой */
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.violet-button {
+    background-color: #d8b5ff;
+    color: #333;
+    border: none;
+    padding: 30px 80px;
+    border-radius: 100%;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.violet-button:hover {
+    background-color: #c495ff;
+}
+
+.violet-button:active {
+    background-color: #b077ff;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .container,
+    .center-container {
+        flex-direction: column;
+    }
+
+    .black-block,
+    .green-block,
+    .black-block-image,
+    .red-block-text {
+        flex: 1 0 100%;
+    }
+
+    .green-block img,
+    .black-block-image img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .violet-button {
+        width: 90%;
+        padding: 24px;
+        font-size: 24px;
+    }
+}
+
+
+/* ============= СБРОС БАЗОВЫХ СТИЛЕЙ ============= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============= ХЕДЕР ============= */
+
+.site-header {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-image: url('../images/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #EDE4B1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* ============= БОКОВЫЕ ИКОНКИ ============= */
+
+.icon {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    /* Плавная анимация при наведении */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Эффект увеличения при наведении (в 2 раза меньше) */
+.icon:hover {
+    transform: scale(1.075);
+}
+
+.icon-b {
+   
+}
+
+.icon-a {
+    background-color: #27ae60;
+}
+
+/* ============= ЦЕНТРАЛЬНЫЕ ИКОНКИ ============= */
+
+.center-icons {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.center-icons .icon {
+    width: 80px;
+    height: 80px;
+    /* Плавная анимация уже наследуется */
+}
+
+/* Цвета центральных иконок (такие же как у нижних блоков) */
+.icon-c {
+    
+}
+
+.icon-d {
+    
+}
+
+.icon-e {
+    
+
+
+/* ============= АДАПТИВНОСТЬ ============= */
+
+@media (max-width: 768px) {
+    .site-header {
+        height: 80px;
+    }
+
+    .icon,
+    .center-icons .icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .center-icons {
+        gap: 8px;
+    }
+
+    /* Меньшее увеличение на мобильных */
+    .icon:hover {
+        transform: scale(1.05);
+    }
+}
+}

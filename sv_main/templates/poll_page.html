@@ -1,6 +1,116 @@
 {% load static %}
 
 
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос</title>
+    <link rel="stylesheet" href="{% static 'poll.css' %}?{% now 'U' %}">
+
+
+
+</head>
+<body>
+
+<header class="site-header">
+            <!-- Левая иконка (Иконка Б) -->
+            <a class="abutton" href="{% url 'main_page' %}">
+            <div class="icon icon-b">
+               
+                <img src="/media/static/logo_bk.png" alt="Иконка Б">
+            </div>
+            </a>
+
+            <!-- Центральные иконки (3 штуки) -->
+             <a class="abutton" href="{% url 'poll_start' %}">
+            <div class="center-icons">
+                <div class="icon icon-c">
+                    <img src="/media/static/p2_bk_alt.png" alt="Иконка C">
+                </div>
+            </a>
+
+                <a class="abutton" href="{% url 'categories_page' %}">
+                <div class="icon icon-d">
+                    <img src="/media/static/p1_bk_alt.png" alt="Иконка D">
+                </div>
+                </a>
+                
+                <a class="abutton" href="{% url 'single_vessel_page' vessel_id=vessel.id %}">
+                <div class="icon icon-e">
+                    <img src="/media/static/p3_bk_alt.png" alt="Иконка E">
+                </div>
+                </a>
+
+            </div>
+
+            <!-- Правая иконка (Иконка А) -->
+            <div class="icon icon-a">
+                <img src="images/icon-a.png" alt="Иконка А">
+            </div>
+        </header>
+
+
+        <form action="{% url 'poll_page' %}" method="post" id="poll-form" class="poll-form">
+                {% csrf_token %}
+                
+                
+                    
+                        <h2 >{{ question.question_text }}</h2>
+                        <div >
+                            {% for ans in question.answer_set.all %}
+
+                            <label class="radio-item">
+                                <input 
+                                    type="radio" 
+                                    id="answer_{{ ans.id }}_q{{ q.id }}" 
+                                    name="question_{{ q.id }}" 
+                                    value="{{ ans.weigth }}"
+                                    class="radio-select-input">
+                                <div class="radio-answer">
+                                    <span class="radio-text">{{ ans.answer_text }}</span>
+                                </div>
+                            </label>
+
+                            {% comment %} <div >
+                                <input 
+                                    type="radio" 
+                                    id="answer_{{ ans.id }}_q{{ q.id }}" 
+                                    name="question_{{ q.id }}" 
+                                    value="{{ ans.weigth }}"
+                                    class="radio-select-input">
+                                <label 
+                                    for="answer_{{ ans.id }}_q{{ q.id }}" 
+                                    class="radio-select-label answer_button"
+                                >
+                                    <span >{{ ans.answer_text }}</span>
+                                </label>
+                            </div> {% endcomment %}
+
+
+                            {% endfor %}
+                        </div>
+                        <button
+                        type="submit"
+                        name="poll_button"
+                        value="go"
+                        class="next-button">
+                        Следующий вопрос
+                        </button>
+                        {% comment %} <a href="{%  %}"></a> {% endcomment %}
+
+        {% comment %} <button type="button" class="next-button">Далее →</button> {% endcomment %}
+    </form>
+</body>
+</html>
+
+
+
+
+
+{% comment %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,10 +177,6 @@
                         </button>
                         {% comment %} <a href="{%  %}"></a> {% endcomment %}
                   
-                </section>
-
-  
-            </form>
 
                 {% comment %} <div>
                     <form action="{% url 'poll_page' %}" method="post">
@@ -89,59 +195,3 @@
                     </form>
                 </div> {% endcomment %}
 
-        </div>
-    </main>
-    
-    <footer>
-        <hr>
-        <small>Made by KengPenro (this part)</small>
-    </footer>
-    <!-- <script>
-        let currentQuestion = 1;
-        const totalQuestions = {{ questions|length }};
-        const questions = document.querySelectorAll('.question_container');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const submitBtn = document.getElementById('submit-btn');
-        const progressFill = document.getElementById('progress-fill');
-        const progressText = document.getElementById('progress-text');
-
-        function updateProgress() {
-            const progress = (currentQuestion / totalQuestions) * 100;
-            progressFill.style.width = progress + '%';
-            progressText.textContent = `Вопрос ${currentQuestion} из ${totalQuestions}`;
-        }
-
-        function showQuestion(questionNumber) {
-            questions.forEach(q => q.style.display = 'none');
-            document.querySelector(`[data-question="${questionNumber}"]`).style.display = 'block';
-            prevBtn.disabled = questionNumber === 1;
-            if (questionNumber === totalQuestions) {
-                nextBtn.style.display = 'none';
-                submitBtn.style.display = 'inline-block';
-            } else {
-                nextBtn.style.display = 'inline-block';
-                submitBtn.style.display = 'none';
-            }
-            updateProgress();
-        }
-
-        prevBtn.addEventListener('click', () => {
-            if (currentQuestion > 1) {
-                currentQuestion--;
-                showQuestion(currentQuestion);
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentQuestion < totalQuestions) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            }
-        });
-
-        // Initial
-        showQuestion(currentQuestion);
-    </script> -->
-</body>
-</html>

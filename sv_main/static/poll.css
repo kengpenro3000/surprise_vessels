@@ -1,0 +1,249 @@
+html {
+            background: 
+                /* PNG overlay*/
+                url("https://i.ibb.co/twmWk9QW/questions-bkg.png"),
+                /* Gradient background */
+                /* linear-gradient(#ffffff 0% 2%, #99D9EA 30% 50%, #674046 98% 100%); */
+                linear-gradient(#EFE4B0 0% 2%, #99d9ea 30% 50%, #26032b 98% 100%);
+            background-repeat: repeat, no-repeat;
+            background-size: cover, cover;
+            background-position: center;
+            background-attachment: scroll, fixed;
+            
+        }
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+    
+    background: 
+                /* PNG overlay*/
+                url("https://i.ibb.co/twmWk9QW/questions-bkg.png"),
+                /* Gradient background */
+                /* linear-gradient(#ffffff 0% 2%, #99D9EA 30% 50%, #674046 98% 100%); */
+                linear-gradient(#EFE4B0 0% 2%, #99d9ea 30% 50%, #26032b 98% 100%);
+            background-repeat: repeat, no-repeat;
+            background-size: cover, cover;
+            background-position: center;
+            background-attachment: scroll, fixed;
+
+
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.question-block {
+    background-color: #6b5b95;
+    padding: 25px;
+    text-align: center;
+}
+
+.question-block h2 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
+    line-height: 1.5;
+}
+
+.radio-group {
+    padding: 20px;
+}
+
+.radio-item {
+    display: block;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.radio-item input[type="radio"] {
+    display: none;
+}
+
+.radio-answer {
+    background-color: #7eb3d9;
+    padding: 15px 20px;
+    border-radius: 0;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.radio-text {
+    display: block;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
+    line-height: 1.5;
+}
+
+.radio-answer:hover {
+    background-color: #6aa3c9;
+}
+
+.radio-item input[type="radio"]:checked + .radio-answer {
+    background-color: #5a8fc7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.next-button {
+    display: block;
+    width: auto;
+    margin: 30px 20px 20px auto;
+    padding: 30px 60px;
+    background-color: #d8c6e8;
+    color: #5a4a84;
+    border: none;
+    border-radius: 50%;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #c9b5d9;
+    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+    .question-block h2 {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .radio-answer {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
+    .next-button {
+        padding: 24px 50px;
+        font-size: 28px;
+        margin: 25px 15px 15px auto;
+    }
+
+    body {
+        padding: 10px;
+    }
+}
+
+
+/* ============= СБРОС БАЗОВЫХ СТИЛЕЙ ============= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============= ХЕДЕР ============= */
+
+.site-header {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-image: url('../images/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: #EDE4B1; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* ============= БОКОВЫЕ ИКОНКИ ============= */
+
+.icon {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    /* Плавная анимация при наведении */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Эффект увеличения при наведении (в 2 раза меньше) */
+.icon:hover {
+    transform: scale(1.075);
+}
+
+.icon-b {
+   
+}
+
+.icon-a {
+    background-color: #27ae60;
+}
+
+/* ============= ЦЕНТРАЛЬНЫЕ ИКОНКИ ============= */
+
+.center-icons {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.center-icons .icon {
+    width: 80px;
+    height: 80px;
+    /* Плавная анимация уже наследуется */
+}
+
+/* Цвета центральных иконок (такие же как у нижних блоков) */
+.icon-c {
+    
+}
+
+.icon-d {
+    
+}
+
+.icon-e {
+    
+
+
+/* ============= АДАПТИВНОСТЬ ============= */
+
+@media (max-width: 768px) {
+    .site-header {
+        height: 80px;
+    }
+
+    .icon,
+    .center-icons .icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .center-icons {
+        gap: 8px;
+    }
+
+    /* Меньшее увеличение на мобильных */
+    .icon:hover {
+        transform: scale(1.05);
+    }
+}
+}

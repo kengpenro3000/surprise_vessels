@@ -7,6 +7,18 @@
 
 /* ============= ОБЩИЕ СТИЛИ СТРАНИЦЫ ============= */
 body {
+
+           background: 
+                /* PNG overlay*/
+                
+                /* Gradient background */
+                /* linear-gradient(#ffffff 0% 2%, #99D9EA 30% 50%, #674046 98% 100%); */
+                linear-gradient(#EFE4B0 0% 2%, #99d9ea 30% 50%, #26032b 98% 100%);
+            background-repeat:  no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment:  fixed;
+
     background-color: #f5f5f5;
     min-height: 100vh;
     display: flex;
@@ -27,7 +39,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #2ecc71;
+    background-color: #EDE4B1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,23 +90,23 @@ body {
 
 /* Цвета центральных иконок (такие же как у нижних блоков) */
 .icon-c {
-    background-color: #9b59b6;
+   
 }
 
 .icon-d {
-    background-color: #f39c12;
+   
 }
 
 .icon-e {
-    background-color: #27ae60;
+    
 }
 
 /* ============= БЛОК С ТЕКСТОМ ============= */
 .text-container {
     position: relative;
-    width: 600px;
-    height: 300px;
-    background-color: #000;
+    width: 80%;
+    height: 50%;
+    background-color: #26032B;
     margin: 50px auto;
     padding: 20px;
     padding-top: 120px;
@@ -111,13 +123,13 @@ body {
 
 .text-top {
     position: absolute;
-    top: -50px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     height: 80px;
-    background-color: #00ff00;
-    color: white;
+    background-color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
     line-height: 80px;
     font-size: 24px;
@@ -129,12 +141,12 @@ body {
 .text-middle {
     position: absolute;
     top: 60px;
-    left: 50%;
+    left: 40%;
     transform: translateX(-50%);
     width: 35%;
     height: 40px;
-    background-color: #00ff00;
-    color: white;
+    background-color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
     line-height: 40px;
     font-size: 18px;
@@ -152,8 +164,8 @@ body {
 }
 
 .button-image {
-    width: 100px;
-    height: 100px;
+    width: px;
+    height: 400px;
     cursor: pointer;
     transition: transform 0.3s ease;
     border: none;
@@ -209,10 +221,11 @@ body {
 
     .text-top {
         top: -45px;
-        width: 95%;
-        height: 70px;
+        width: 50%;
+        height: 50%;
         line-height: 70px;
         font-size: 20px;
+
     }
 
     .text-middle {
@@ -293,4 +306,86 @@ body {
     .site-footer {
         height: 70px;
     }
+}
+
+
+.icon {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    /* Плавная анимация при наведении */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;.
+    object-fit: contain;
+}
+
+/* Эффект увеличения при наведении (в 2 раза меньше) */
+.icon:hover {
+    transform: scale(1.075);
+}
+
+.icon-b {
+   
+}
+
+.icon-a {
+    background-color: #27ae60;
+}
+
+/* ============= ЦЕНТРАЛЬНЫЕ ИКОНКИ ============= */
+
+.center-icons {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.center-icons .icon {
+    width: 80px;
+    height: 80px;
+    /* Плавная анимация уже наследуется */
+}
+
+/* Цвета центральных иконок (такие же как у нижних блоков) */
+.icon-c {
+    
+}
+
+.icon-d {
+    
+}
+
+.icon-e {
+    
+
+
+/* ============= АДАПТИВНОСТЬ ============= */
+
+@media (max-width: 768px) {
+    .site-header {
+        height: 80px;
+    }
+
+    .icon,
+    .center-icons .icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .center-icons {
+        gap: 8px;
+    }
+
+    /* Меньшее увеличение на мобильных */
+    .icon:hover {
+        transform: scale(1.05);
+    }
+}
 }

@@ -1,6 +1,84 @@
 {% load static %}
 
+
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная страница</title>
+    <link rel="stylesheet" href="{% static 'results.css' %}?{% now 'U' %}">
+</head>
+<body>
+
+<header class="site-header">
+            <!-- Левая иконка (Иконка Б) -->
+            <a class="abutton" href="{% url 'main_page' %}">
+            <div class="icon icon-b">
+               
+                <img src="/media/static/logo_bk.png" alt="Иконка Б">
+            </div>
+            </a>
+
+            <!-- Центральные иконки (3 штуки) -->
+             <a class="abutton" href="{% url 'poll_start' %}">
+            <div class="center-icons">
+                <div class="icon icon-c">
+                    <img src="/media/static/p2_bk_alt.png" alt="Иконка C">
+                </div>
+            </a>
+
+                <a class="abutton" href="{% url 'categories_page' %}">
+                <div class="icon icon-d">
+                    <img src="/media/static/p1_bk_alt.png" alt="Иконка D">
+                </div>
+                </a>
+                
+                <a class="abutton" href="{% url 'single_vessel_page' vessel_id=vessel.id %}">
+                <div class="icon icon-e">
+                    <img src="/media/static/p3_bk_alt.png" alt="Иконка E">
+                </div>
+                </a>
+
+            </div>
+
+            <!-- Правая иконка (Иконка А) -->
+            <div >
+                
+            </div>
+        </header>
+
+    <!-- Существующий контейнер -->
+    <div class="container">
+        <div class="black-block">
+            <h3>Ваша категория: {{ final_cat.name }}</h3>
+            <p></p>
+        </div>
+        <div class="green-block">
+            <img src="/media/static/u_did_it.png" alt="Пример изображения">
+        </div>
+    </div>
+
+    <!-- Новые центрированные блоки -->
+    <div class="center-container">
+        <div class="black-block-image">
+            <img src="{% if final_cat.image %}{{ final_cat.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" alt="{{ final_cat.name }}">
+        </div>
+        <div class="red-block-text">
+            <p>{{ final_cat.description }}</p>
+        </div>
+    </div>
+
+    <!-- Форма с кнопкой -->
+    <form class="form-container">
+        <button type="submit" class="violet-button">Отправить</button>
+    </form>
+</body>
+</html>
+
+
+
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -53,16 +131,7 @@
                 </div>
             </section>
 
-            <section class="vessel_cta_section">
-                <div class="vessel_cta_content">
-                    <h2 class="vessel_cta_title">Узнайте больше</h2>
-                    <p class="vessel_cta_text">Посмотрите другие сосуды или пройдите тест заново.</p>
-                    <div class="vessel_cta_buttons">
-                        <a href="{% url 'vessels_page' %}" class="vessel_cta_button primary">Все Сосуды</a>
-                        <a href="{% url 'poll_start' %}" class="vessel_cta_button secondary">Пройти заново</a>
-                    </div>
-                </div>
-            </section>
+
         </div>
     </main>
 
@@ -71,4 +140,4 @@
         <small>Made by KengPenro (this part)</small>
     </footer>
 </body>
-</html>
+</html> {% endcomment %}

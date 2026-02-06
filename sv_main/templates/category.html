@@ -1,6 +1,98 @@
 {% load static %}
 
+
+
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Два блока</title>
+    <link rel="stylesheet" href="{% static 'cat.css' %}?{% now 'U' %}">
+</head>
+<body>
+
+<header class="site-header">
+            <!-- Левая иконка (Иконка Б) -->
+            <a class="abutton" href="{% url 'main_page' %}">
+            <div class="icon icon-b">
+               
+                <img src="/media/static/logo_bk.png" alt="Иконка Б">
+            </div>
+            </a>
+
+            <!-- Центральные иконки (3 штуки) -->
+             <a class="abutton" href="{% url 'poll_start' %}">
+            <div class="center-icons">
+                <div class="icon icon-c">
+                    <img src="/media/static/p2_bk_alt.png" alt="Иконка C">
+                </div>
+            </a>
+
+                <a class="abutton" href="{% url 'categories_page' %}">
+                <div class="icon icon-d">
+                    <img src="/media/static/p1_bk_alt.png" alt="Иконка D">
+                </div>
+                </a>
+                
+                <a class="abutton" href="{% url 'single_vessel_page' vessel_id=vessel.id %}">
+                <div class="icon icon-e">
+                    <img src="/media/static/p3_bk_alt.png" alt="Иконка E">
+                </div>
+                </a>
+
+            </div>
+
+            <!-- Правая иконка (Иконка А) -->
+            <div >
+                
+            </div>
+        </header>
+
+
+
+    <div class="container">
+        <div class="left-block">
+            <img src="{% if category.image %}{{ category.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" 
+                     alt="{{ category.name }}"
+                     loading="lazy">
+        </div>
+        <div class="right-block">
+            <h1 >{{ category.name }}</h1>
+                <p >{{ category.description }}</p>
+        </div>
+    </div>
+    <h2>Сосуды в этой категории</h2>
+    <div class="icons-container">
+    {% for vess in vess_for %}
+            {% comment %} <div class="icons-container"> {% endcomment %}
+            
+            <div class="square-block block-c">
+                <img src="{% if category.image %}{{ category.image.url }}{% else %}{{ DEFAULT_CATEGORY_IMAGE }}{% endif %}" 
+                     alt="{{ category.name }}"
+                     loading="lazy">
+            </div>
+            
+    {% endfor %}
+    </div>
+
+            {% comment %} <!-- Блок с иконкой D -->
+            <div class="square-block block-d">
+                <img src="images/icon-d.png" alt="Иконка D">
+            </div>
+
+            <!-- Блок с иконкой E -->
+            <div class="square-block block-e">
+                <img src="images/icon-e.png" alt="Иконка E">
+            </div>
+        </div> {% endcomment %}
+    </div>
+</body>
+</html>
+
+
+
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -59,4 +151,4 @@
         <small>Made by KengPenro (this part)</small>
     </footer>
 </body>
-</html>
+</html> {% endcomment %}

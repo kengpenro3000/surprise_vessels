@@ -15,16 +15,17 @@
         <!-- Основной контейнер хедера -->
         <header class="site-header">
             <!-- Левая иконка (Иконка Б) -->
-             
+             <a class="abutton" href="{% url 'main_page' %}">
             <div class="icon icon-b">
-                <!-- Изображение для Иконки Б -->
-                <img src="images/icon-b.png" alt="Иконка Б">
+               
+                <img src="/media/static/logo_bk.png" alt="Иконка Б">
             </div>
+            </a>
 
             <!-- Правая иконка (Иконка А) -->
             <div class="icon icon-a">
                 <!-- Изображение для Иконки А -->
-                <img src="images/icon-a.png" alt="Иконка А">
+              
             </div>
         </header>
 
@@ -38,31 +39,29 @@
             <!-- Блок с иконкой C -->
                 <a class="abutton" href="{% url 'poll_start' %}">
             <div class="square-block block-c">
-                <img src="images/icon-c.png" alt="Иконка C">
+                <img src="/media/static/p2_bk_alt.png" alt="Иконка C">
             </div>
-                Все Сосуды</a>
+                </a>
 
             <!-- Блок с иконкой D -->
                 <a class="abutton" href="{% url 'categories_page' %}">
             <div class="square-block block-d">
-                <img src="images/icon-d.png" alt="Иконка D">
+                <img src="/media/static/p1_bk_alt.png" alt="Иконка D">
             </div>
-                Категории</a>
+                </a>
 
             <!-- Блок с иконкой E -->
              <a class="abutton" href="{% url 'single_vessel_page' vessel_id=vessel.id %}">
             <div class="square-block block-e">
-                <img src="{% if vessel.image %}{{ vessel.image.url }}{% else %}{{ DEFAULT_VESSEL_IMAGE }}{% endif %}" alt="Иконка E">
+                <img src="/media/static/p3_bk_alt.png" alt="Иконка E">
 
             </div>
-            Сосудо</a>
+            </a>
         </div>
     </div>
 
     <!-- ФУТЕР (ВСЕГДА В НИЗУ СТРАНИЦЫ) -->
-    <footer class="site-footer">
-        <!-- Паттерн повторяется автоматически через фон -->
-    </footer>
+
 </body>
 <!-- </html> -->
 

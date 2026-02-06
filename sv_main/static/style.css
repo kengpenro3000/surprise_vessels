@@ -11,6 +11,18 @@
 /* ============= ОБЩИЕ СТИЛИ СТРАНИЦЫ ============= */
 
 body {
+
+           background: 
+                /* PNG overlay*/
+                
+                /* Gradient background */
+                /* linear-gradient(#ffffff 0% 2%, #99D9EA 30% 50%, #674046 98% 100%); */
+                linear-gradient(#EFE4B0 0% 2%, #99d9ea 30% 50%, #26032b 98% 100%);
+            background-repeat:  no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment:  fixed;
+
     /* Основной фон страницы */
     background-color: #f5f5f5;
     /* Важно: устанавливаем минимальную высоту на 100% высоты экрана */
@@ -30,24 +42,19 @@ body {
 /* ============= ХЕДЕР ============= */
 
 .site-header {
-    /* ВАЖНО: добавлено position: relative для правильного позиционирования иконок */
     position: relative;
-    /* Ширина на всю страницу */
     width: 100%;
-    /* Высота хедера */
     height: 100px;
-    /* Фоновое изображение */
     background-image: url('../images/header-bg.jpg');
-    /* Масштабируем фон, чтобы он покрывал весь хедер */
     background-size: cover;
-    /* Центрируем фон */
     background-position: center;
-    /* Не повторяем фон */
     background-repeat: no-repeat;
-    /* Запасной цвет фона (если изображение не загрузится) */
-    background-color: #2ecc71;
+    background-color: #EDE4B1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
 }
-
 /* ============= ОБЩИЕ СТИЛИ ДЛЯ ИКОНОК ХЕДЕРА ============= */
 
 .icon {
@@ -82,7 +89,7 @@ body {
     /* Отступ от левого края страницы */
     left: 10px;
     /* Фоновый цвет для визуализации размера - СИНИЙ */
-    background-color: #3498db;
+   
 }
 
 /* Правая иконка (Иконка А) - КРАСНЫЙ ЦВЕТ */
@@ -90,7 +97,7 @@ body {
     /* Отступ от правого края страницы */
     right: 10px;
     /* Фоновый цвет для визуализации размера - КРАСНЫЙ */
-    background-color: #e74c3c;
+  
 }
 
 /* ============= БЛОК ДЛЯ ТЕКСТА ============= */
@@ -161,7 +168,7 @@ body {
     /* Скрываем содержимое, выходящее за границы */
     overflow: hidden;
     /* Бирюзовый бордер у всех блоков */
-    border: 4px solid #1abc9c;
+  
 }
 
 /* Стили для изображений внутри квадратных блоков */
@@ -178,17 +185,17 @@ body {
 
 /* Блок с иконкой C - ФИОЛЕТОВЫЙ */
 .block-c {
-    background-color: #9b59b6;
+  
 }
 
 /* Блок с иконкой D - ОРАНЖЕВЫЙ */
 .block-d {
-    background-color: #f39c12;
+   
 }
 
 /* Блок с иконкой E - ЗЕЛЁНЫЙ */
 .block-e {
-    background-color: #27ae60;
+    
 }
 
 /* ============= ФУТЕР ============= */
